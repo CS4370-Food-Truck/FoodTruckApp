@@ -1,24 +1,40 @@
-# README
+                                                                    ***FoodTruckApp***
+                                                                    
+                                                                    
+Name: James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby version 3.1.0
 
-Things you may want to cover:
+Rails version 7.0.3.1
 
-* Ruby version
+... *Rails installation on windows
 
-* System dependencies
+*First start by installing a Linux distribution using WSL, for WSL use command:  wsl --install or you can use git bash, by going to https://git-scm.com/downloads or whatever command line you're using,
 
-* Configuration
+*Open command prompt and check if you alredy have Ruby installed by using the command: ruby -v
 
-* Database creation
+*If Ruby responds and you have version 3.1.0 then type: gem --version, if no error is listed then you can install rails by using the command: gem install rails
 
-* Database initialization
+*If you need to install Ruby go to rubyinstaller.org and follow the download link and run the installer. 
 
-* How to run the test suite
+*Install Rails, by using the command: gem install rails
 
-* Services (job queues, cache servers, search engines, etc.)
+*Check the Rails version by using command: rails -v (you should have rails version 7.0.3.1)
 
-* Deployment instructions
 
-* ...
+
+... *To run the application:
+
+*Clone repository
+
+*Open PowerShell or whatever command line you’re using
+
+*Go to the correct folder/path
+
+*To run the test type rails test
+
+*Enter rails server
+
+*Open a new web-page and go to http://localhost:3000/trucks
+
+*The database should appear
