@@ -1,4 +1,4 @@
-                                                                    ***FoodTruckApp***
+ ***FoodTruckApp***
                                                                     
                                                                     
 Name: James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
