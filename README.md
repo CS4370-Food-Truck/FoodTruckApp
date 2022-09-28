@@ -1,7 +1,7 @@
  ***FoodTruckApp***
                                                                     
                                                                     
-Name: James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
+Names: James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
 
 Ruby version 3.1.0
 
