@@ -6,6 +6,11 @@ class TrucksController < ApplicationController
     @trucks = Truck.all
   end
 
+  # GET /trucks-simple or /trucks-simple.json
+  def simple
+    @trucks = Truck.all
+  end
+
   # GET /trucks/1 or /trucks/1.json
   def show
   end
