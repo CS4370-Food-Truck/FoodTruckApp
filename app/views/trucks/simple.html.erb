@@ -2,13 +2,12 @@
 
 <h1>Trucks</h1>
 
-<%= link_to "Simple view", "/trucks-simple" %>
-<%= link_to "Delete all trucks", "/trucks-delete" %>
+<%= link_to "Back to complex view", trucks_path %>
+
 <div id="trucks">
   <% @trucks.each do |truck| %>
-    <%= render truck %>
     <p>
-      <%= link_to "Show this truck", truck %>
+      <%= link_to ("Name: " + truck.name + " Longitude: " + truck.longitude.to_s + " Latitude: " + truck.latitude.to_s), truck %>
     </p>
   <% end %>
 </div>

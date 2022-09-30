@@ -6,6 +6,11 @@ class TrucksController < ApplicationController
     @trucks = Truck.all
   end
 
+  # GET /trucks-simple or /trucks-simple.json
+  def simple
+    @trucks = Truck.all
+  end
+
   # GET /trucks/1 or /trucks/1.json
   def show
   end
@@ -53,6 +58,18 @@ class TrucksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to trucks_url, notice: "Truck was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  def destroyall
+    @trucks = Truck.all
+    @trucks.each do |truck|
+      truck.destroy
+    end
+
+    respond_to do |format|
+      format.html { redirect_to trucks_url, notice: "All trucks destroyed" }
       format.json { head :no_content }
     end
   end
