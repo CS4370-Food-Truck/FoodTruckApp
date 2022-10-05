@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root "trucks#index"
   get "/trucks-simple", to: "trucks#simple"
   get "/trucks-delete", to: "trucks#destroyall"
+  get "/map", to: "map#index"
 end
