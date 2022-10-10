@@ -61,4 +61,9 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should not save truck without name" do
+    truck = Truck.new
+    assert_not truck.save, "Saved the truck without a name"
+  end
+
 end
