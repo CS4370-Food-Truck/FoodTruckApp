@@ -1,17 +1,25 @@
-// Initialize and add the map
+import trucksJson from '/trucks.json' assert {type: 'json'};
+
 function initMap() {
-    // The location of Uluru
-    const uluru = { lat: 39.743057, lng: -105.005554 };
-    // The map, centered at Uluru
+    const msu = { lat: 39.743057, lng: -105.005554 };
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
-        center: uluru,
+        center: msu,
     });
-    // The marker, positioned at Uluru
+
     const marker = new google.maps.Marker({
-        position: uluru,
+        position: msu,
         map: map,
     });
+
+    for(let i = 0; i < trucksJson.length; i++){
+        let truck = trucksJson[i];
+        new google.maps.Marker({
+            position: { lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude) },
+            map: map,
+        })
+    }
+
 }
 
 window.initMap = initMap;
