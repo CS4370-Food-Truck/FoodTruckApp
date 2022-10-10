@@ -56,4 +56,9 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should show map" do
+    get map_url
+    assert_response :success
+  end
+
 end
