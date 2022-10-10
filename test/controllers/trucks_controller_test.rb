@@ -45,4 +45,9 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to trucks_url
   end
+  test "should destroy all trucks" do
+    assert_difference("Truck.count", -1 * eval("Truck.count")) do
+      get trucks_delete_url
+    end
+  end
 end
