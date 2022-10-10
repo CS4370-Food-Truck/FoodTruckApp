@@ -11,6 +11,15 @@ function initMap() {
         position: msu,
         map: map,
     });
+
+    for(let i = 0; i < trucksJson.length; i++){
+        let truck = trucksJson[i];
+        new google.maps.Marker({
+            position: { lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude) },
+            map: map,
+        })
+    }
+
 }
 
 window.initMap = initMap;
