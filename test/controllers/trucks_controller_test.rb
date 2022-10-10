@@ -50,4 +50,10 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
       get trucks_delete_url
     end
   end
+
+  test "should show simple view" do
+    get trucks_simple_url
+    assert_response :success
+  end
+
 end
