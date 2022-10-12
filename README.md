@@ -2,6 +2,31 @@
                                                                     
 Creators James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
 
+**REQUIREMENTS**
+  1. Ruby version 3.1.0
+  2. Rails version 7.0.3.1
+  3. A google API key
+  4. 
+If rails is already installed on your devise, using this should be as simple as cloning the repository, plugging in your API Key and running the server.
+
+**Getting an API KEY**
+A Google API key is an essential part. It is what will allow the host to use the google map feature. 
+This is a link to the google map's platform where you can get an API key. 
+https://mapsplatform.google.com/
+
+Google provides access to free API keys. It does require you put in a card, but it won't charge you unless you surpass thier limit for free feature. For example, having more than 12 API keys. 
+
+
+
+**Installing Ruby on Rails** 
+
+
+... *Rails installation on windows
+
+*First start by installing a Linux distribution using WSL, for WSL use command:  wsl --install or you can use git bash, by going to https://git-scm.com/downloads or whatever command line you're using,
+
+*Open command prompt and check if you alredy have Ruby installed by using the command: ruby -v
+
 ** Requirements **
     1. Ruby version 3.1.0
     2. Rails version 7.0.3.1
@@ -45,6 +70,6 @@ This may take a few mintues
 
 5. To start the server on your computer use the command: rails server (or rails s)
 
-6. With yoyur browser use this URL http://localhost:3000. This will display the map.
+6. With your browser use this URL http://localhost:3000. This will display the map.
 
 7. If you want to browse the database use the URL http://localhost:3000/trucks.

@@ -45,4 +45,25 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to trucks_url
   end
+  test "should destroy all trucks" do
+    assert_difference("Truck.count", -1 * eval("Truck.count")) do
+      get trucks_delete_url
+    end
+  end
+
+  test "should show simple view" do
+    get trucks_simple_url
+    assert_response :success
+  end
+
+  test "should show map" do
+    get map_url
+    assert_response :success
+  end
+
+  test "should not save truck without name" do
+    truck = Truck.new
+    assert_not truck.save, "Saved the truck without a name"
+  end
+
 end
