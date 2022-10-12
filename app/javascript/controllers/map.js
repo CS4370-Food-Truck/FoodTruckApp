@@ -7,17 +7,26 @@ function initMap() {
         center: msu,
     });
 
-    const marker = new google.maps.Marker({
-        position: msu,
-        map: map,
-    });
-
     for(let i = 0; i < trucksJson.length; i++){
         let truck = trucksJson[i];
-        new google.maps.Marker({
+        let textContent =
+            '<h1>' + truck.name + '</h1>' +
+            '<a href=">' + truck.website + '">Truck Website</a>'
+        ;
+        let infoWindow = new google.maps.InfoWindow({
+            content: textContent
+        });
+        let marker = new google.maps.Marker({
             position: { lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude) },
             map: map,
-        })
+        });
+        marker.addListener("click", () => {
+            infoWindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+        });
     }
 
 }
