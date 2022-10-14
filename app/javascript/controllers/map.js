@@ -7,6 +7,9 @@ function initMap() {
         center: msu,
     });
 
+    //array used for closing infowindow
+    let InforObj = [];
+
     for(let i = 0; i < trucksJson.length; i++){
         let truck = trucksJson[i];
         let textContent =
@@ -21,13 +24,26 @@ function initMap() {
             map: map,
         });
         marker.addListener("click", () => {
+            //calls function to close infowindow
+            closeOtherInfo();
             infoWindow.open({
                 anchor: marker,
                 map,
                 shouldFocus: false,
             });
+            //Places infowindow in array to keep track of which one is open
+            InforObj[0] = infoWindow;
         });
     }
+    //function checks array, if infowindow is found it is closed
+    function closeOtherInfo() {
+        if (InforObj.length > 0) {
+            InforObj[0].set("marker", null);
+            InforObj[0].close();
+            InforObj.length = 0;
+        }
+    }
+
 
 }
 
