@@ -16,7 +16,6 @@ jobs:
     services:
       postgres:
         image: postgres:11-alpine
-        options: --user root
         ports:
           - "5432:5432"
         env:
