@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :trucks
-  
+  resources :users, except: [:new]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   get "/trucks-delete", to: "trucks#destroyall"
   get "/map", to: "map#index"
 
-  # User routes
-  resources :users, except: [:new]
 
   # Session routes
   get "signup", to: "users#new"
