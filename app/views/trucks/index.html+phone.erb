@@ -1,0 +1,29 @@
+<style>
+    h1 {text-align: center;}
+    h3 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+</style>
+
+<p style="color: green"><%= notice %></p>
+<% if logged_in? %>
+  <%= button_to 'Log Out', logout_path(current_user), method: :destroy %>
+<%  else %>
+  <%= link_to 'Log In', login_path, class: "mobileview"  %>
+  <%= link_to 'Sign Up', signup_path, class: "mobileview" %>
+<% end %>
+
+<h1><span style="font-size: 144%; ">Trucks</span></h1>
+
+<%= link_to "Simple view", "/trucks-simple", class: "mobileview" %>
+<%= link_to "Delete all trucks", "/trucks-delete", class: "mobileview" %>
+<div id="trucks">
+  <% @trucks.each do |truck| %>
+    <%= render truck %>
+    <p>
+      <%= link_to "Show this truck", truck, class: "mobileview" %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New truck", new_truck_path %>
