@@ -1,0 +1,25 @@
+<h1> Rowdy’s Food Truck Finder</h1>
+
+<script type="module" src="/assets/controllers/map.js"></script>
+<head>
+  <title>Add Map</title>
+  <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+
+</head>
+
+
+<body>
+<h3>Food Truck Locator</h3>
+<h3>mobile view</h3>
+<div id="map"></div>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=<%= Figaro.env.MAP_API %>&callback=initMap&v=weekly"
+  defer
+></script>
+</body>
+
+<%= render 'map/trucktable'%>
+<div class ="container">
+  <br/>
+  <%= yield %>
+</div>
