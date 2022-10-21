@@ -21,7 +21,7 @@
   <% @trucks.each do |truck| %>
     <%= render truck %>
     <p>
-      <%= link_to "Show this truck", truck %>
+      <%= link_to "Show this truck", truck, class: "mobileview" %>
     </p>
   <% end %>
 </div>
