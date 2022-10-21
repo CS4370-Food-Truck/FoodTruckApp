@@ -1,4 +1,11 @@
-<h1> Rowdy’s Food Truck Finder</h1>
+<style>
+    h1 {text-align: center;}
+    h3 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+</style>
+
+<h1><span style="font-size: 144%; "> Rowdy’s Food Truck Finder</span></h1>
 
 <script type="module" src="/assets/controllers/map.js"></script>
 <head>
@@ -9,8 +16,7 @@
 
 
 <body>
-<h3>Food Truck Locator</h3>
-<h3>mobile view</h3>
+<h3><span style="font-size: 144%; ">Food Truck Locator</span></h3>
 <div id="map"></div>
 <script
   src="https://maps.googleapis.com/maps/api/js?key=<%= Figaro.env.MAP_API %>&callback=initMap&v=weekly"
