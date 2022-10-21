@@ -13,9 +13,9 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete(:current_user_id)
+        #session.delete(:current_user_id)
         session[:user_id] = nil
-        @_current_user = nil
+        #@_current_user = nil
         flash[:notice] = "You are now logged out."
         redirect_to(trucks_path)
     end
