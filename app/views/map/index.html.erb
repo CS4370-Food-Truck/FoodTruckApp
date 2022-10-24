@@ -1,15 +1,13 @@
-<h1> Rowdy’s Food Truck Finder</h1>
-
+<h1>Map</h1>
 <script type="module" src="/assets/controllers/map.js"></script>
 <head>
   <title>Add Map</title>
   <link rel="stylesheet" type="text/css" href="./assets/style.css" />
-
 </head>
 
 
 <body>
-<h3>Food Truck Locator</h3>
+<h3>My Google Maps Demo</h3>
 <div id="map"></div>
 <script
   src="https://maps.googleapis.com/maps/api/js?key=<%= Figaro.env.MAP_API %>&callback=initMap&v=weekly"
@@ -17,8 +15,11 @@
 ></script>
 </body>
 
+<!-- This is the code that displays the table in views/map/_truckstable.html.erb-->
+<div id = "table">
   <%= render 'map/trucktable'%>
-    <div class ="container">
-    <br/>
-      <%= yield %>
-    </div>
+</div>
+
+<div class ="container">
+<br/>
+<%= yield %>
