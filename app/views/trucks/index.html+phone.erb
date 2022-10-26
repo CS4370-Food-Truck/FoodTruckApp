@@ -15,15 +15,17 @@
 
 <h1><span style="font-size: 144%; ">Trucks</span></h1>
 
-<%= link_to "Simple view", "/trucks-simple", class: "mobileview" %>
-<%= link_to "Delete all trucks", "/trucks-delete", class: "mobileview" %>
-<div id="trucks">
-  <% @trucks.each do |truck| %>
-    <%= render truck %>
-    <p>
-      <%= link_to "Show this truck", truck, class: "mobileview" %>
-    </p>
-  <% end %>
-</div>
+<% if logged_in? %>
+  <%= link_to "Simple view", "/trucks-simple", class: "mobileview" %>
+  <%= link_to "Delete all trucks", "/trucks-delete", class: "mobileview" %>
+  <div id="trucks">
+    <% @trucks.each do |truck| %>
+      <%= render truck %>
+      <p>
+        <%= link_to "Show this truck", truck, class: "mobileview" %>
+      </p>
+    <% end %>
+  </div>
 
-<%= link_to "New truck", new_truck_path %>
+  <%= link_to "New truck", new_truck_path %>
+<% end %>
