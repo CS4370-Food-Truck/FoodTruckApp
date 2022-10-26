@@ -1,11 +1,11 @@
 #map {
 height: 400px;
     /* The height is 400 pixels */	    /* The height is 400 pixels */
-width: 50%;
+width: 40%;
     /* The width is the width of the web page */	    /* The width is the width of the web page */
     float: left;
 }
 #table {
-    width: 45%;
+    width: 55%;
     float: right;
 }
