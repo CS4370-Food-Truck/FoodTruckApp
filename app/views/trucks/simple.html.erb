@@ -2,14 +2,16 @@
 
 <h1>Trucks</h1>
 
-<%= link_to "Back to complex view", trucks_path %>
+<% if logged_in? %>
+  <%= link_to "Back to complex view", trucks_path %>
 
-<div id="trucks">
-  <% @trucks.each do |truck| %>
-    <p>
-      <%= link_to ("Name: " + truck.name + " Longitude: " + truck.longitude.to_s + " Latitude: " + truck.latitude.to_s), truck %>
-    </p>
-  <% end %>
-</div>
+  <div id="trucks">
+    <% @trucks.each do |truck| %>
+      <p>
+        <%= link_to ("Name: " + truck.name + " Longitude: " + truck.longitude.to_s + " Latitude: " + truck.latitude.to_s), truck %>
+      </p>
+    <% end %>
+  </div>
 
-<%= link_to "New truck", new_truck_path %>
+  <%= link_to "New truck", new_truck_path %>
+<% end %>
