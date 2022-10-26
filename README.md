@@ -3,9 +3,9 @@
 Creators James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Thornburgh, Karent Correa
 
 **REQUIREMENTS**
-  1. Ruby version 3.1.0
+  1. Ruby version 3.1.2
   2. Rails version 7.0.3.1
-  3. A google API key
+  3. A google maps API key
   4. 
 If rails is already installed on your devise, using this should be as simple as cloning the repository, plugging in your API Key and running the server.
 

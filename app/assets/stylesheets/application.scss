@@ -3,5 +3,27 @@
 
 $theme-color: "cyan";
 body{
-    background-color: mediumslateblue;
+    background-image: url('/assets/truckImages/background.png');
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    
+    
+    // background-color: rgb(164, 217, 233);
 }
+h1 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .mobileview {
+    font-size: 144%;
+    padding: 10px;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }

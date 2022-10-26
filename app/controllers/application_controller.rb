@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        !current_user
+        !!current_user
     end
 
     def require_user
@@ -16,5 +16,24 @@ class ApplicationController < ActionController::Base
             redirect_to(login_path)
         end
     end
-    
+
+    #detect device type and request corresponding variant
+    before_action :detect_device_type
+
+    private
+    def detect_device_type
+        case request.user_agent
+        when /iPad/i
+            request.variant = :phone
+        when /iPhone/i
+            request.variant = :phone
+        when /Android/i && /mobile/i
+            request.variant = :phone
+        when /Android/i
+            request.variant = :phone
+        when /Windows Phone/i
+            request.variant = :phone
+        end
+    end
+
 end

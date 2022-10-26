@@ -1,14 +1,16 @@
 <div class= "title-container">
  <h1>New truck</h1>
 <div>
-<div class="panel panel-default">
-<div class="panel-body">
-<%= render "form", truck: @truck %>
+<% if logged_in? %>
+  <div class="panel panel-default">
+  <div class="panel-body">
+  <%= render "form", truck: @truck %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to trucks", trucks_path %>
-</div>
-<div>
-<div>
+  <div>
+    <%= link_to "Back to trucks", trucks_path %>
+  </div>
+  <div>
+  <div>
+<% end %>

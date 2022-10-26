@@ -1,0 +1,21 @@
+<div id="trucks">
+
+  <table class=" table table-stiped table-bordered table-hover center" style="width: 100%; font-size: 30px;">
+    <thead class= "thread-primary">
+    <tr>
+      <th scope="col">Truck's Name</th>
+
+      <th colspan = "1"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% Truck.all.each do |truck| %>
+      <tr class="table-primary table-striped">
+        <td><%=truck.name%></td>
+
+        <td><%= link_to "View this Truck", truck %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
