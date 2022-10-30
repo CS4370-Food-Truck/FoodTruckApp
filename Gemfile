@@ -45,8 +45,6 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
-
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -78,4 +76,3 @@ group :test do
 end
 
 gem "figaro", "~> 1.2"
-
