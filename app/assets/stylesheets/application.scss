@@ -6,7 +6,8 @@
 $theme-color: "cyan";
 body{
     background-image: url('/assets/truckImages/background.png');
-    background-repeat: no-repeat;
+    background-attachment: fixed, scroll;
+    background-repeat: no-repeat, repeat-y;
     background-size: 100%; 
     
     
