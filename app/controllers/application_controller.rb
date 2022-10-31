@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
             request.variant = :phone
         when /Android/i
             request.variant = :phone
-        when /Windows Phone/i
+        when /Windows/i
             request.variant = :phone
         end
     end
