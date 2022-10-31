@@ -1,5 +1,6 @@
 class TrucksController < ApplicationController
   before_action :set_truck, only: %i[ show edit update destroy ]
+  before_action :require_user, :except => [ :index, :simple, :show ]
 
   # GET /trucks or /trucks.json
   def index
@@ -15,6 +16,7 @@ class TrucksController < ApplicationController
   def show
   end
 
+  
   # GET /trucks/new
   def new
     @truck = Truck.new
