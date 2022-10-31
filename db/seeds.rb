@@ -32,6 +32,6 @@ Truck.create(name: "Roll it Up Sushi", schedule: '{"Monday": true, "Tuesday": fa
 Truck.create(name: "Billy's Gorment Hot Dogs", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://billysgourmethotdogs.com/", latitude:39.743287, longitude: -105.005651, menu: "https://billysgourmethotdogs.com/food-menu/")
 Truck.create(name: "El Taco Bron", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://www.eltacobron.com/", latitude:39.743287, longitude: -105.005651, menu: "https://www.eltacobron.com/menu")
 Truck.create(name: "Ba-nom-a-nom", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://banomanom.com/", latitude: 39.743287, longitude: -105.005651, menu: "https://banomanom.com/our-menu")
-
+Truck.create(name: "Biker Jim's", schedule: '{"Monday": true, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": true, "Saturday": false, "Sunday": false}', website: "www.bikerjimsdogs.com", latitude: 39.744155, longitude: -105.006029, menu: "https://bikerjimsdogs.com/our-menu/")
 
 
