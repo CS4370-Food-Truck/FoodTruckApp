@@ -9,9 +9,13 @@
 ##############################################################################
 #                                Test Seeds                                  #
 ##############################################################################
-Truck.create(name: "test1", website: "test1", latitude: 39.743287, longitude: -105.005651,  menu: "test1", schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
-Truck.create(name: "test2", website: "test2", latitude: 39.743211, longitude: -105.005428, menu: "test2",  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": true, "Saturday": true, "Sunday": true}')
-Truck.create(name: "test3", website: "test3", latitude: 39.741843, longitude: -105.007926, menu: "test3",  schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
+#Truck.create(name: "test1", website: "test1", latitude: 39.743287, longitude: -105.005651,  menu: "test1", schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
+#Truck.create(name: "test2", website: "test2", latitude: 39.743211, longitude: -105.005428, menu: "test2",  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": true, "Saturday": true, "Sunday": true}')
+#Truck.create(name: "test3", website: "test3", latitude: 39.741843, longitude: -105.007926, menu: "test3",  schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
+
+##############################################################################
+#                              Actual Seeds                                  #
+##############################################################################
 Truck.create(name: "OG Burger", schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://ogburgers.co/", latitude: 39.743287, longitude: -105.005651,  menu: "https://ogburgers.co/menu")
 Truck.create(name: "Mac N' Noodles", schedule: '{"Monday": false, "Tuesday": false, "Wednesday": true, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://macnnoodles.com/", latitude: 39.743287, longitude: -105.005651,  menu: "https://macnnoodles.com/menu/")
 Truck.create(name: "Breck Brew", schedule: '{"Monday": false, "Tuesday": false, "Wednesday": true, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://www.breckbrew.com/", latitude: 39.743287, longitude: -105.005651,  menu: "https://www.breckbrew.com/visit/littleton/food-truck-menu/")
@@ -40,6 +44,4 @@ Truck.create(name: "Biker Jim's", schedule: '{"Monday": true, "Tuesday": true, "
 
 >>>>>>> Stashed changes
 
-##############################################################################
-#                              Actual Seeds                                  #
-##############################################################################
+
