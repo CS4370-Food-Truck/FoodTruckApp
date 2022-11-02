@@ -9,7 +9,7 @@
        "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}' -->
   <p>
     <strong>Schedule:</strong>
-    <%t = truck.schedule = JSON.parse(truck.schedule) %>
+    <%t = JSON.parse(truck.schedule) %>
     <% w = ""%>
     <%if t["Monday"] === true%>
     <% w += "Mon. "%>
