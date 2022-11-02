@@ -1,5 +1,5 @@
 module TrucksHelper
-    def format_schedule(x)
+        def format_schedule(x)
         t = JSON.parse(x)
         w = ""
         if t["Monday"] === true

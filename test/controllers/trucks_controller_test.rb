@@ -23,10 +23,10 @@ class TrucksControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to truck_url(Truck.last)
   # end
 
-  test "should show truck" do
-    get truck_url(@truck)
-    assert_response :success
-  end
+  #test "should show truck" do
+  #  get truck_url(@truck)
+  #  assert_response :success
+  #end
 
   # test "should get edit" do
   #   get edit_truck_url(@truck)
