@@ -4,9 +4,35 @@
     <%= truck.name %>
   </p>
 
+
+<!-- '{"Monday": true, "Tuesday": false, "Wednesday": false, 
+       "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}' -->
   <p>
     <strong>Schedule:</strong>
-    <%= truck.schedule %>
+    <%t = truck.schedule = JSON.parse(truck.schedule) %>
+    <% w = ""%>
+    <%if t["Monday"] === true%>
+    <% w += "Mon. "%>
+    <%end%>
+    <%if t["Tuesday"] === true%>
+    <% w += "Tues. "%>
+    <%end%>
+    <%if t["Wednesday"] === true%>
+      <% w += "Wed. "%>
+    <%end%>
+    <%if t["Thursday"] === true%>
+      <% w += "Thurs. "%>
+    <%end%>
+    <%if t["Friday"] === true%>
+      <% w += "Fri. "%>
+    <%end%>
+    <%if t["Saturday"] === true%>
+      <% w += "Sat. "%>
+    <%end%>
+    <%if t["Sunday"] === true%>
+      <% w += "Sun. "%>
+    <%end%>
+    <%=w%>
   </p>
 
   <p>
