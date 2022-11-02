@@ -13,8 +13,6 @@ Creators James Feliciano,  Arturo Valenzuela Montes, Juliet Smith,  Michelle Tho
 **Installing Ruby** 
 
 
-... *Rails installation
-
 Run the command:
 
   ``sudo apt-get install ruby-full``
