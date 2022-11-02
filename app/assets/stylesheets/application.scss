@@ -2,7 +2,6 @@
 @import "bootstrap";
 
 
-
 $theme-color: "cyan";
 body{
     background-image: url('/assets/truckImages/background.png');
@@ -14,19 +13,27 @@ body{
     // background-color: rgb(164, 217, 233);
 }
 h1 {
-    text-align: center;
+     text-align: center;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+     font-weight: 300;
+     font-size: 500%;
+     color: rgb(85, 2, 2);
   }
 
   h3 {
     text-align: center;
+    color:rgb(85, 2, 2);
   }
 
   .mobileview {
     font-size: 144%;
     padding: 10px;
+    color: rgb(85, 2, 2)
   }
 
   .center {
     margin-left: auto;
     margin-right: auto;
+    color: rgb(85, 2, 2)
+
   }
