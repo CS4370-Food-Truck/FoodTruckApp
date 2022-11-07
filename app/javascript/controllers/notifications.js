@@ -51,12 +51,10 @@ function subscribeUserToPush() {
 
 function subscriptionAndTrucks(subscription) {
     let url = window.location.href;
-    subscription["trucks"] = url.substring(url.lastIndexOf('/') + 1);
-    console.log(url);
-    console.log(url.substring(url.lastIndexOf('/') + 1));
-    console.log(subscription);
-    console.log(JSON.stringify(subscription));
-    return subscription
+    let fixedSubscription = JSON.parse(JSON.stringify(subscription));
+    fixedSubscription["trucks"] = url.substring(url.lastIndexOf('/') + 1);
+    console.log(JSON.stringify(fixedSubscription));
+    return fixedSubscription;
 }
 
 function sendSubscriptionToBackEnd(subscription) {
