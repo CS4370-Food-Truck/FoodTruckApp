@@ -49,19 +49,29 @@ function subscribeUserToPush() {
         });
 }
 
+function subscriptionAndTrucks(subscription) {
+    let url = window.location.href;
+    subscription["trucks"] = url.substring(url.lastIndexOf('/') + 1);
+    console.log(url);
+    console.log(url.substring(url.lastIndexOf('/') + 1));
+    console.log(subscription);
+    console.log(JSON.stringify(subscription));
+    return subscription
+}
+
 function sendSubscriptionToBackEnd(subscription) {
     return fetch('/save-subscription/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(subscription),
+        body: JSON.stringify(subscriptionAndTrucks(subscription)),
     })
         .then(function (response) {
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-
+            console.log(response);
             return response.json();
         })
         .then(function (responseData) {
@@ -70,6 +80,8 @@ function sendSubscriptionToBackEnd(subscription) {
             }
         });
 }
+
+
 
 function testCompatability() {
     if (!('serviceWorker' in navigator)) {
