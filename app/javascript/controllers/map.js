@@ -20,7 +20,7 @@ function weekDayToString(day){
 }
 
 function initMap() {
-    const msu = { lat: 39.743057, lng: -105.005554 };
+    const msu = {lat: 39.743057, lng: -105.005554};
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
         center: msu,
@@ -29,7 +29,7 @@ function initMap() {
     //array used for closing infowindow
     let InforObj = [];
 
-    for(let i = 0; i < trucksJson.length; i++){
+    for (let i = 0; i < trucksJson.length; i++) {
         let truck = trucksJson[i];
         let textContent =
             '<h1>' + truck.name + '</h1>' +
@@ -39,14 +39,14 @@ function initMap() {
             content: textContent
         });
 
-        try{
+        try {
             let schedule = JSON.parse(truck.schedule);
             let date = new Date();
             let weekday = date.getDay();
-            if(schedule.hasOwnProperty(weekDayToString(weekday))){
-                if(schedule[weekDayToString(weekday)] === true){
+            if (schedule.hasOwnProperty(weekDayToString(weekday))) {
+                if (schedule[weekDayToString(weekday)] === true) {
                     let marker = new google.maps.Marker({
-                        position: { lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude) },
+                        position: {lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude)},
                         map: map,
                     });
                     marker.addListener("click", () => {
@@ -67,6 +67,7 @@ function initMap() {
             console.log(truck.name);
         }
     }
+
     //function checks array, if infowindow is found it is closed
     function closeOtherInfo() {
         if (InforObj.length > 0) {
@@ -79,6 +80,7 @@ function initMap() {
     let infoWindow = new google.maps.InfoWindow();
     const locationButton = document.createElement("button");
 
+    //adds button to find user location
     locationButton.textContent = "Pan to Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
@@ -107,18 +109,31 @@ function initMap() {
             handleLocationError(false, infoWindow, map.getCenter());
         }
     });
+
+    //directions
+    const directionsService = new google.maps.DirectionsService();
+
+    directionsService.route(
+        {
+            //origin: "272 Bronson Ave, Ottawa, Canada",
+            origin:"855 Lawrence Way, Denver, CO 80204",
+            //destination: "1385 Woodroffe Ave, Nepean, Canada",
+            destination: "5th St, Denver, CO 80204",
+            //travelMode: "DRIVING",
+            travelMode: "WALKING",
+        },
+        (response, status) => {
+            if (status === "OK") {
+
+                new google.maps.DirectionsRenderer({
+                    suppressMarkers: true,
+                    directions: response,
+                    map: map,
+                });
+            }
+        })
+
+
+
 }
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(
-        browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-    );
-    infoWindow.open(map);
-
-
-}
-
 window.initMap = initMap;
