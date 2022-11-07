@@ -2,10 +2,38 @@
     height: 400px;
     width: 40%;
         float: left;
+
     }
     #table {
         width: 55%;
         float: right;
         table-layout: fixed;
+        background-color: rgb(243, 234, 234);
+        
     }
-}
+
+
+/* Used website code to make the table scrollable: https://mdbootstrap.com/docs/b4/jquery/tables/scroll/#advanced-table-options */
+
+
+.dtHorizontalVerticalExampleWrapper {
+     max-width: auto; 
+     margin: 0 auto; 
+  }
+  #dtHorizontalVerticalExample th, td {
+     white-space: nowrap; 
+  }
+  table.trucksTable thead .sorting:after,
+  table.trucksTable thead .sorting:before,
+  table.trucksTable thead .sorting_asc:after,
+  table.trucksTable thead .sorting_asc:before,
+  table.trucksTable thead .sorting_asc_disabled:after,
+  table.trucksTable thead .sorting_asc_disabled:before,
+  table.trucksTable thead .sorting_desc:after,
+  table.trucksTable thead .sorting_desc:before,
+  table.trucksTable thead .sorting_desc_disabled:after,
+  table.trucksTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+
+  }
+
