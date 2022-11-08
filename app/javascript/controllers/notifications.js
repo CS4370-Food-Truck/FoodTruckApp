@@ -53,7 +53,6 @@ function subscriptionAndTrucks(subscription) {
     let url = window.location.href;
     let fixedSubscription = JSON.parse(JSON.stringify(subscription));
     fixedSubscription["trucks"] = url.substring(url.lastIndexOf('/') + 1);
-    console.log(JSON.stringify(fixedSubscription));
     return fixedSubscription;
 }
 
@@ -69,7 +68,6 @@ function sendSubscriptionToBackEnd(subscription) {
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-            console.log(response);
             return response.json();
         })
         .then(function (responseData) {
@@ -84,12 +82,10 @@ function sendSubscriptionToBackEnd(subscription) {
 function testCompatability() {
     if (!('serviceWorker' in navigator)) {
         throw new Error('No Service Worker support!');
-        return false;
     }
 
     if (!('PushManager' in window)) {
         throw new Error('No Push API Support!');
-        return false;
     }
     return true;
 }

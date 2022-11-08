@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   # were to verify the authenticity token, that doesn't stop any of the possible exploits.
 
   def subscribe
-    @subscription = PushSubscription.new({"subscription" => request.body.read})
+    @subscription = PushSubscription.new(JSON.parse(request.body.read))
     if @subscription.save
       redirect_to(trucks_path)
     else

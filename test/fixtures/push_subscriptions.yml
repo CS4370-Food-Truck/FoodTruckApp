@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  subscription: MyString
+  endpoint: MyString
+  expirationTime: MyString
+  keys: 
   trucks: MyString
 
 two:
-  subscription: MyString
+  endpoint: MyString
+  expirationTime: MyString
+  keys: 
   trucks: MyString
