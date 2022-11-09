@@ -53,7 +53,7 @@ function subscribeUserToPush() {
 function subscriptionAndTrucks(subscription) {
     let url = window.location.href;
     let fixedSubscription = JSON.parse(JSON.stringify(subscription));
-    fixedSubscription["trucks"] = url.substring(url.lastIndexOf('/') + 1);
+    fixedSubscription["trucks"] = " " + url.substring(url.lastIndexOf('/') + 1) + " ";
     return fixedSubscription;
 }
 
@@ -78,7 +78,26 @@ function sendSubscriptionToBackEnd(subscription) {
         });
 }
 
-
+function updateSubscriptionOnBackEnd(subscription) {
+    return fetch('/add-subscription/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscriptionAndTrucks(subscription)),
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Bad status code from server.');
+            }
+            return response.json();
+        })
+        .then(function (responseData) {
+            if (!(responseData.data && responseData.data.success)) {
+                throw new Error('Bad response from server.');
+            }
+        });
+}
 
 function testCompatability() {
     if (!('serviceWorker' in navigator)) {
@@ -108,10 +127,10 @@ function urlBase64ToUint8Array(base64String) {
 
 function checkForSubscription(){
     return navigator.serviceWorker.ready
-        .then((serviceWorkerRegistration) => {serviceWorkerRegistration.pushManager.getSubscription()
-            .then((subscription) => {
-                return subscription
-            })})
+        .then((serviceWorkerRegistration) => {return serviceWorkerRegistration.pushManager.getSubscription()})
+        .then((subscription) => {
+            return subscription
+        })
 }
 
 if (testCompatability() === true){
@@ -124,6 +143,6 @@ if (testCompatability() === true){
         console.log("Subscription found for user.")
         //This is where we would want to create buttons for subscribing/unsubscribing from this truck. Also unsub all.
         requestPermission().then(registerServiceWorker)
-        //TODO: Add truck to subscription.
+        checkForSubscription().then(updateSubscriptionOnBackEnd)
     }
 }

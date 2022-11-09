@@ -13,10 +13,31 @@ class NotificationsController < ApplicationController
   end
 
   def subtruck
-    #Customer.where(first_name: 'Lifo').take
+    receivedsubscription = JSON.parse(request.body.read)
+    url = receivedsubscription['endpoint']
+    @subscription = PushSubscription.where(endpoint: url).first
+
+    if @subscription.trucks.index(receivedsubscription['trucks'])
+      puts("We are already subscribed to that truck.")
+    else
+      newtrucks = @subscription.trucks + receivedsubscription['trucks']
+      PushSubscription.where(endpoint: url).update_all(trucks: newtrucks)
+    end
+    redirect_to(trucks_path)
   end
   def unsubtruck
-    #Customer.where(first_name: 'Lifo').take
+    receivedsubscription = JSON.parse(request.body.read)
+    url = receivedsubscription['endpoint']
+    @subscription = PushSubscription.where(endpoint: url).first
+
+    if @subscription.trucks.index(receivedsubscription['trucks'])
+      newtrucks = @subscription.trucks
+      newtrucks.slice!(receivedsubscription['trucks'])
+      PushSubscription.where(endpoint: url).update_all(trucks: newtrucks)
+    else
+      puts("We are not subscribed to that truck.")
+    end
+    redirect_to(trucks_path)
   end
   def unsubscribe
     #Customer.where(first_name: 'Lifo').take
