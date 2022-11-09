@@ -25,4 +25,14 @@ module TrucksHelper
         end
           w
     end
+    # Jblss888
+    # where I got the idea to use this to format the input:
+    # https://stackoverflow.com/questions/591939/how-can-i-format-the-value-shown-in-a-rails-edit-field
+    #
+    #What the schedule input needs to look like
+    #'{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}'
+    def input_schedule(x[]):
+        s="{"
+        
+    end
 end
