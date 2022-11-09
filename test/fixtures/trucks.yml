@@ -2,7 +2,7 @@
 
 one:
   name: MyString
-  schedule: MyString
+  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}'
   website: MyString
   longitude: 9.99
   latitude: 9.99
@@ -10,7 +10,7 @@ one:
 
 two:
   name: MyString
-  schedule: MyString
+  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}'
   website: MyString
   longitude: 9.99
   latitude: 9.99
