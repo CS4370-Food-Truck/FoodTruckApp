@@ -13,17 +13,15 @@
       <th scope="col">Website</th>
       <th scope="col">Menu</th>
       <th scope="col">Schedule</th>
-      <th colspan = "1"></th>
     </tr>
   </thead>
   <tbody>
     <% Truck.all.each do |truck| %>
       <tr class="table-primary table-striped">
-        <td><%=truck.name%></td>
-        <td><%=truck.website%></td>
-        <td><%=truck.menu%></td>
+        <td><%=link_to truck.name, truck%></td>
+        <td><%=link_to "Visit", truck.website%></td>
+        <td><%=link_to "View cite's menue", truck.menu%></td>
         <td><%= format_schedule(truck.schedule)%></td>
-        <td><%= link_to "Show this Truck", truck %></td>
       </tr>
     <% end %>
   </tbody>
