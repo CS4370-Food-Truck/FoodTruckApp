@@ -106,7 +106,24 @@ function urlBase64ToUint8Array(base64String) {
     return outputArray;
 }
 
+function checkForSubscription(){
+    return navigator.serviceWorker.ready
+        .then((serviceWorkerRegistration) => {serviceWorkerRegistration.pushManager.getSubscription()
+            .then((subscription) => {
+                return subscription
+            })})
+}
+
 if (testCompatability() === true){
-    requestPermission().then(registerServiceWorker)
-    subscribeUserToPush().then(sendSubscriptionToBackEnd);
+    //TODO: Create the subscribe, unsubscribe, buttons somewhere on the path.
+    if (!checkForSubscription()){
+        console.log("No subscription data found.")
+        requestPermission().then(registerServiceWorker)
+        subscribeUserToPush().then(sendSubscriptionToBackEnd);
+    } else {
+        console.log("Subscription found for user.")
+        //This is where we would want to create buttons for subscribing/unsubscribing from this truck. Also unsub all.
+        requestPermission().then(registerServiceWorker)
+        //TODO: Add truck to subscription.
+    }
 }

@@ -4,7 +4,7 @@ class CreatePushSubscriptions < ActiveRecord::Migration[7.0]
       t.string :endpoint
       t.string :expirationTime
       t.json :keys
-      t.string :trucks
+      t.string :trucks #TODO: Change to array of integers.
 
       t.timestamps
     end

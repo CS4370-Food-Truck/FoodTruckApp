@@ -12,6 +12,15 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def subtruck
+    #Customer.where(first_name: 'Lifo').take
+  end
+  def unsubtruck
+    #Customer.where(first_name: 'Lifo').take
+  end
+  def unsubscribe
+    #Customer.where(first_name: 'Lifo').take
+  end
   def notify
     @subscription = PushSubscription.all
     @subscription.each do |subscription|
@@ -25,12 +34,11 @@ class NotificationsController < ApplicationController
           subject: "Subject.",
           public_key: Figaro.env.NOTIFY_PUBLIC,
           private_key: Figaro.env.NOTIFY_PRIVATE,
-          exp:12.hours
+          exp:13.hours
         }
       )
-
-      redirect_to(trucks_path)
     end
+    redirect_to(trucks_path)
   end
 
 end
