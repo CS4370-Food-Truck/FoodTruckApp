@@ -1,21 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
-
-  <h1> <%=@truck.name%></h1>
-
-  <%= render @truck %>
+<h1> <%=@truck.name%></h1>
   
-
-
-  <div>
-    <% if logged_in? %>
-      <%= link_to "Edit this truck", edit_truck_path(@truck) %> |
-    <% end %>
-    <%= link_to "Back to trucks", trucks_path %>
-    <%= link_to "Back to trucks (simple view)", "/trucks-simple" %>
-    <% if logged_in? %>
-      <%= button_to "Destroy this truck", @truck, method: :delete %>
-        <% end %>
-  </div>
+<div id = "table">
+  <%= render @truck %>
+</div>
+<div>
+  <% if logged_in? %>
+    <%= link_to "Edit this truck", edit_truck_path(@truck) %> |
+  <% end %>
+  <%= link_to "Back to trucks", trucks_path %> |
+  <%= link_to "Back to trucks (simple view)", "/trucks-simple" %>
+  <% if logged_in? %>
+    <%= button_to "Destroy this truck", @truck, method: :delete %>
+  <% end %>
+</div>
 
 
