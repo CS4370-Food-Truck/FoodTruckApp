@@ -12,4 +12,25 @@ class NotificationsController < ApplicationController
     end
   end
 
+  def notify
+    @subscription = PushSubscription.all
+    @subscription.each do |subscription|
+
+      Webpush.payload_send(
+        message: "Testing notification",
+        endpoint: subscription.endpoint,
+        auth: subscription.keys['auth'],
+        p256dh: subscription.keys['p256dh'],
+        vapid: {
+          subject: "Subject.",
+          public_key: Figaro.env.NOTIFY_PUBLIC,
+          private_key: Figaro.env.NOTIFY_PRIVATE,
+          exp:12.hours
+        }
+      )
+
+      redirect_to(trucks_path)
+    end
+  end
+
 end

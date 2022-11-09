@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   resources :users, except: [:new]
   post "/save-subscription", to: "notifications#subscribe"
+  get "/notify", to: "notifications#notify"
 
 end
