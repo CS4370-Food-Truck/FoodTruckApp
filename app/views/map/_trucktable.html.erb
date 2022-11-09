@@ -22,7 +22,7 @@
         <td><%=truck.name%></td>
         <td><%=truck.website%></td>
         <td><%=truck.menu%></td>
-        <td><%=truck.schedule%></td>
+        <td><%= format_schedule(truck.schedule)%></td>
         <td><%= link_to "Show this Truck", truck %></td>
       </tr>
     <% end %>
