@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
+
+  <h1> <%=@truck.name%></h1>
+
   <%= render @truck %>
+  
+
 
   <div>
     <% if logged_in? %>
@@ -12,4 +17,5 @@
       <%= button_to "Destroy this truck", @truck, method: :delete %>
         <% end %>
   </div>
+
 
