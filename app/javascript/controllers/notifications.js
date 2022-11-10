@@ -150,6 +150,7 @@ function checkForSubscription(){
     return navigator.serviceWorker.ready
         .then((serviceWorkerRegistration) => {return serviceWorkerRegistration.pushManager.getSubscription()})
         .then((subscription) => {
+            console.log(subscription)
             return subscription
         })
 }
@@ -176,16 +177,12 @@ function unsubscribeUser(subscription){
         });
 }
 
-
-
-if (testCompatability() === true){
-    //TODO: Create the subscribe, unsubscribe, buttons somewhere on the path.
-    if (!checkForSubscription()){
+function showButtons(givenSubscription) {
+    if (!givenSubscription) {
         console.log("No subscription data found.")
         let button = document.createElement("button");
         button.innerHTML = "Subscribe to notifications for this truck";
         button.onclick = function () {
-            requestPermission().then(registerServiceWorker);
             subscribeUserToPush().then(sendSubscriptionToBackEnd);
         }
         document.body.appendChild(button);
@@ -195,7 +192,6 @@ if (testCompatability() === true){
         let subscribeTruck = document.createElement("button");
         subscribeTruck.innerHTML = "Add truck to your notifications";
         subscribeTruck.onclick = function () {
-            requestPermission().then(registerServiceWorker);
             checkForSubscription().then(updateSubscriptionOnBackEnd);
         }
         document.body.appendChild(subscribeTruck);
@@ -203,7 +199,6 @@ if (testCompatability() === true){
         let unsubscribeTruck = document.createElement("button");
         unsubscribeTruck.innerHTML = "Remove truck from your notifications";
         unsubscribeTruck.onclick = function () {
-            requestPermission().then(registerServiceWorker);
             checkForSubscription().then(removePartialSubscriptionOnBackEnd);
         }
         document.body.appendChild(unsubscribeTruck);
@@ -211,9 +206,19 @@ if (testCompatability() === true){
         let unsubscribeAll = document.createElement("button");
         unsubscribeAll.innerHTML = "Unsubscribe from all trucks";
         unsubscribeAll.onclick = function () {
-            requestPermission().then(registerServiceWorker);
             checkForSubscription().then(unsubscribeUser);
         }
         document.body.appendChild(unsubscribeAll);
     }
+}
+
+
+if (testCompatability() === true){
+    let notificationsButton = document.createElement("button");
+    notificationsButton.innerHTML = "Open Notification Controls";
+    notificationsButton.onclick = function () {
+        document.body.removeChild(notificationsButton)
+            requestPermission().then(registerServiceWorker).then(checkForSubscription).then(showButtons)
+        }
+    document.body.appendChild(notificationsButton)
 }
