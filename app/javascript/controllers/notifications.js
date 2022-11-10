@@ -168,7 +168,6 @@ function showButtons(givenSubscription) {
         document.body.appendChild(button);
     } else {
         console.log("Subscription found for user.")
-        //This is where we would want to create buttons for subscribing/unsubscribing from this truck. Also unsub all.
         let subscribeTruck = document.createElement("button");
         subscribeTruck.innerHTML = "Add truck to your notifications";
         subscribeTruck.onclick = function () {
