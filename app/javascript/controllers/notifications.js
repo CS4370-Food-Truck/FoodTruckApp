@@ -1,3 +1,5 @@
+//Code created with some reference from: https://web.dev/push-notifications-subscribing-a-user/
+
 function registerServiceWorker() {
     return navigator.serviceWorker
         .register('/service-worker.js')
