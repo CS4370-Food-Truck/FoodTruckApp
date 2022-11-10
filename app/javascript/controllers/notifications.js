@@ -99,6 +99,27 @@ function updateSubscriptionOnBackEnd(subscription) {
         });
 }
 
+function removePartialSubscriptionOnBackEnd(subscription) {
+    return fetch('/remove-subscription/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscriptionAndTrucks(subscription)),
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Bad status code from server.');
+            }
+            return response.json();
+        })
+        .then(function (responseData) {
+            if (!(responseData.data && responseData.data.success)) {
+                throw new Error('Bad response from server.');
+            }
+        });
+}
+
 function testCompatability() {
     if (!('serviceWorker' in navigator)) {
         throw new Error('No Service Worker support!');
@@ -133,16 +154,66 @@ function checkForSubscription(){
         })
 }
 
+function unsubscribeUser(subscription){
+    return fetch('/unsubscribe/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(subscription),
+    })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Bad status code from server.');
+            }
+            subscription.unsubscribe()
+            return response.json();
+        })
+        .then(function (responseData) {
+            if (!(responseData.data && responseData.data.success)) {
+                throw new Error('Bad response from server.');
+            }
+        });
+}
+
+
+
 if (testCompatability() === true){
     //TODO: Create the subscribe, unsubscribe, buttons somewhere on the path.
     if (!checkForSubscription()){
         console.log("No subscription data found.")
-        requestPermission().then(registerServiceWorker)
-        subscribeUserToPush().then(sendSubscriptionToBackEnd);
+        let button = document.createElement("button");
+        button.innerHTML = "Subscribe to notifications for this truck";
+        button.onclick = function () {
+            requestPermission().then(registerServiceWorker);
+            subscribeUserToPush().then(sendSubscriptionToBackEnd);
+        }
+        document.body.appendChild(button);
     } else {
         console.log("Subscription found for user.")
         //This is where we would want to create buttons for subscribing/unsubscribing from this truck. Also unsub all.
-        requestPermission().then(registerServiceWorker)
-        checkForSubscription().then(updateSubscriptionOnBackEnd)
+        let subscribeTruck = document.createElement("button");
+        subscribeTruck.innerHTML = "Add truck to your notifications";
+        subscribeTruck.onclick = function () {
+            requestPermission().then(registerServiceWorker);
+            checkForSubscription().then(updateSubscriptionOnBackEnd);
+        }
+        document.body.appendChild(subscribeTruck);
+
+        let unsubscribeTruck = document.createElement("button");
+        unsubscribeTruck.innerHTML = "Remove truck from your notifications";
+        unsubscribeTruck.onclick = function () {
+            requestPermission().then(registerServiceWorker);
+            checkForSubscription().then(removePartialSubscriptionOnBackEnd);
+        }
+        document.body.appendChild(unsubscribeTruck);
+
+        let unsubscribeAll = document.createElement("button");
+        unsubscribeAll.innerHTML = "Unsubscribe from all trucks";
+        unsubscribeAll.onclick = function () {
+            requestPermission().then(registerServiceWorker);
+            checkForSubscription().then(unsubscribeUser);
+        }
+        document.body.appendChild(unsubscribeAll);
     }
 }
