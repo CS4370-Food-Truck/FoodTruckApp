@@ -35,7 +35,7 @@ function subscribeUserToPush() {
                 userVisibleOnly: true,
                 applicationServerKey: urlBase64ToUint8Array(
                     //TODO: Make user get public key from a file on the website instead of hardcoding it.
-                    'BGHb-4XS05am7kxb_C_vCS_9-0XKjQdukAyYNduNGT73m4Spw7CBllMV04-b87cx7q1-Z3eLiWLv-CT5-q634uk',
+                    'BJ-M85-rL_cR-YOb1tFTiz9BRyss0bEdrjxssfhUqZcnvHsSOABWVZs-zJ8_qYN_sE2AxbFXgSVY6LiyLBg9GyA',
                 ),
             };
 
