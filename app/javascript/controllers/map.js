@@ -1,4 +1,5 @@
 import trucksJson from '/trucks.json' assert {type: 'json'};
+var map;
 
 function weekDayToString(day){
     switch (day){
@@ -21,7 +22,7 @@ function weekDayToString(day){
 
 function initMap() {
     const msu = {lat: 39.743057, lng: -105.005554};
-    const map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
         center: msu,
     });
@@ -81,25 +82,34 @@ function initMap() {
     const locationButton = document.createElement("button");
 
     //adds button to find user location
+
     locationButton.textContent = "Pan to Current Location";
     locationButton.classList.add("custom-map-control-button");
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+
+    function success(position){
+        const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+        };
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent("Location found.");
+        infoWindow.open(map);
+        map.setCenter(pos);
+        console.log(pos)
+    }
 
     locationButton.addEventListener("click", () => {
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    };
 
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent("Location found.");
-                    infoWindow.open(map);
-                    map.setCenter(pos);
+                (position) => {
+                    success(position)
+
                 },
+
                 () => {
                     handleLocationError(true, infoWindow, map.getCenter());
                 }
@@ -110,30 +120,76 @@ function initMap() {
         }
     });
 
-    //directions
-    const directionsService = new google.maps.DirectionsService();
+    //adds button for directions
 
-    directionsService.route(
-        {
-            //origin: "272 Bronson Ave, Ottawa, Canada",
-            origin:"855 Lawrence Way, Denver, CO 80204",
-            //destination: "1385 Woodroffe Ave, Nepean, Canada",
-            destination: "5th St, Denver, CO 80204",
-            //travelMode: "DRIVING",
-            travelMode: "WALKING",
-        },
-        (response, status) => {
-            if (status === "OK") {
+    const dicButton = document.createElement("button");
+    dicButton.textContent = "Directions";
+    dicButton.classList.add("custom-map-control-button");
+    map.controls[google.maps.ControlPosition.TOP_RIGHT].push(dicButton);
 
-                new google.maps.DirectionsRenderer({
-                    suppressMarkers: true,
-                    directions: response,
-                    map: map,
-                });
-            }
-        })
+    dicButton.addEventListener("click", () => {
 
+        console.log("hereeeeeeeeeeeee")
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+        }
+        else {
+            alert("Geolocation not supported");
+        }
+        console.log("now hereeeeeeeeeeeee")
 
+        /*
+        directionsService.route(
+            {
+                //origin: "272 Bronson Ave, Ottawa, Canada",
+                //origin: "39.741462,-105.009659",
+                //origin: success2(),
+                origin: globb,
+                //destination: "1385 Woodroffe Ave, Nepean, Canada",
+                destination: "5th St, Denver, CO 80204",
+                //travelMode: "DRIVING",
+                travelMode: "WALKING",
+            },
+            (response, status) => {
+                if (status === "OK") {
+
+                    new google.maps.DirectionsRenderer({
+                        suppressMarkers: true,
+                        directions: response,
+                        map: map,
+                    });
+                }
+            })
+*/
+    });
 
 }
+
+function locationSuccess(position) {
+
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+
+    var myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var truckLocation = new google.maps.LatLng(39.741462, -105.009659);
+
+    directionsDisplay.setMap(map);
+
+    var request = {
+        origin: myLocation,
+        destination: truckLocation,
+        travelMode: 'WALKING'
+    };
+
+    directionsService.route(request, function (result, status) {
+        if (status == google.maps.DirectionsStatus.OK)
+            directionsDisplay.setDirections(result);
+    });
+
+}
+
+function locationError() {
+    alert("Couldn't get location");
+}
+
 window.initMap = initMap;
