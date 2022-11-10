@@ -69,12 +69,7 @@ function sendSubscriptionToBackEnd(subscription) {
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-            return response.json();
-        })
-        .then(function (responseData) {
-            if (!(responseData.data && responseData.data.success)) {
-                throw new Error('Bad response from server.');
-            }
+            location.reload();
         });
 }
 
@@ -90,12 +85,7 @@ function updateSubscriptionOnBackEnd(subscription) {
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-            return response.json();
-        })
-        .then(function (responseData) {
-            if (!(responseData.data && responseData.data.success)) {
-                throw new Error('Bad response from server.');
-            }
+            location.reload();
         });
 }
 
@@ -111,12 +101,7 @@ function removePartialSubscriptionOnBackEnd(subscription) {
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-            return response.json();
-        })
-        .then(function (responseData) {
-            if (!(responseData.data && responseData.data.success)) {
-                throw new Error('Bad response from server.');
-            }
+            location.reload();
         });
 }
 
@@ -167,13 +152,8 @@ function unsubscribeUser(subscription){
             if (!response.ok) {
                 throw new Error('Bad status code from server.');
             }
-            subscription.unsubscribe()
-            return response.json();
-        })
-        .then(function (responseData) {
-            if (!(responseData.data && responseData.data.success)) {
-                throw new Error('Bad response from server.');
-            }
+            subscription.unsubscribe();
+            location.reload();
         });
 }
 
