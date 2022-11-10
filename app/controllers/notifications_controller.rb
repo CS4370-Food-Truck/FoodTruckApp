@@ -40,7 +40,12 @@ class NotificationsController < ApplicationController
     redirect_to(trucks_path)
   end
   def unsubscribe
-    #Customer.where(first_name: 'Lifo').take
+    receivedsubscription = JSON.parse(request.body.read)
+    url = receivedsubscription['endpoint']
+    @subscription = PushSubscription.where(endpoint: url).first
+    @subscription.destroy
+
+    redirect_to(trucks_path)
   end
   def notify
     @subscription = PushSubscription.all
