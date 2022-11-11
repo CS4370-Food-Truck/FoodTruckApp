@@ -6,19 +6,19 @@ namespace :notifications do
     truckstoday = ""
     subscriptions.each do |subscription|
       truckstocheck = subscription.trucks.split("  ")
-      trucksToCheck.each do |truck|
+      truckstocheck.each do |truck|
         truckid = truck.strip
-        entry = Truck.find(truckID)
+        entry = Truck.find(truckid)
         schedule = JSON.parse(entry.schedule)
         today = DAYNAMES[Date.today.wday]
         if schedule[today] == true
-          trucksToday = trucksToday + entry.name + ", "
+          truckstoday = truckstoday + entry.name + ", "
         end
       end
 
-      if trucksToday.length > 0
+      if truckstoday.length > 0
         Webpush.payload_send(
-          message: "Food trucks are arriving today: " + trucksToday,
+          message: "Food trucks are arriving today: " + truckstoday,
           endpoint: subscription.endpoint,
           auth: subscription.keys['auth'],
           p256dh: subscription.keys['p256dh'],
