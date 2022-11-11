@@ -2,7 +2,6 @@ namespace :notifications do
   desc "Notify users of which of their favorite trucks will be available today."
   task notify: :environment do
     subscriptions = PushSubscription.all
-    puts(subscriptions)
     subscriptions.each do |subscription|
       Webpush.payload_send(
         message: "Testing notification",
@@ -13,7 +12,7 @@ namespace :notifications do
           subject: "Subject.",
           public_key: Figaro.env.NOTIFY_PUBLIC,
           private_key: Figaro.env.NOTIFY_PRIVATE,
-          exp:13.hours
+          expiration:13.hours
         }
       )
     end

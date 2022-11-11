@@ -60,7 +60,7 @@ class NotificationsController < ApplicationController
           subject: "Subject.",
           public_key: Figaro.env.NOTIFY_PUBLIC,
           private_key: Figaro.env.NOTIFY_PRIVATE,
-          exp:13.hours
+          expiration:13.hours
         }
       )
     end
