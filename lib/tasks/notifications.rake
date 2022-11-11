@@ -4,16 +4,21 @@ namespace :notifications do
     DAYNAMES = %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
     subscriptions = PushSubscription.all
     truckstoday = ""
+
     subscriptions.each do |subscription|
-      truckstocheck = subscription.trucks.split("  ")
-      truckstocheck.each do |truck|
-        truckid = truck.strip
-        entry = Truck.find(truckid)
-        schedule = JSON.parse(entry.schedule)
-        today = DAYNAMES[Date.today.wday]
-        if schedule[today] == true
-          truckstoday = truckstoday + entry.name + ", "
+      begin
+        truckstocheck = subscription.trucks.split("  ")
+        truckstocheck.each do |truck|
+          truckid = truck.strip.to_i
+          entry = Truck.find(truckid)
+          schedule = JSON.parse(entry.schedule)
+          today = DAYNAMES[Date.today.wday]
+          if schedule[today] == true
+            truckstoday = truckstoday + entry.name + ", "
+          end
         end
+      rescue ActiveRecord::RecordNotFound => e
+        puts('Invalid ID ignored.')
       end
 
       if truckstoday.length > 0
