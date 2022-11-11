@@ -23,7 +23,6 @@ class NotificationsController < ApplicationController
       newtrucks = @subscription.trucks + receivedsubscription['trucks']
       PushSubscription.where(endpoint: url).update_all(trucks: newtrucks)
     end
-    redirect_to(trucks_path)
   end
   def unsubtruck
     receivedsubscription = JSON.parse(request.body.read)
@@ -37,15 +36,12 @@ class NotificationsController < ApplicationController
     else
       puts("We are not subscribed to that truck.")
     end
-    redirect_to(trucks_path)
   end
   def unsubscribe
     receivedsubscription = JSON.parse(request.body.read)
     url = receivedsubscription['endpoint']
     @subscription = PushSubscription.where(endpoint: url).first
     @subscription.destroy
-
-    redirect_to(trucks_path)
   end
   def notify
     #TODO: Remove this test for final release.
@@ -84,6 +80,5 @@ class NotificationsController < ApplicationController
         )
       end
     end
-    redirect_to(trucks_path)
   end
 end
