@@ -20,6 +20,11 @@ function weekDayToString(day){
     }
 }
 
+//don't worry about this, I might use it later, if not I'll delete - arturo
+//infoWindow.setContent("<div>" + truck.name + "<br><input type='submit' id='butSubmit' value='Procurar' onclick='dicDic()'><div id='bar'></div></div>");
+
+
+
 function initMap() {
     const msu = {lat: 39.743057, lng: -105.005554};
     map = new google.maps.Map(document.getElementById("map"), {
@@ -31,6 +36,7 @@ function initMap() {
     let InforObj = [];
 
     for (let i = 0; i < trucksJson.length; i++) {
+
         let truck = trucksJson[i];
         let textContent =
             '<h1>' + truck.name + '</h1>' +
@@ -50,8 +56,10 @@ function initMap() {
                         position: {lat: parseFloat(truck.latitude), lng: parseFloat(truck.longitude)},
                         map: map,
                     });
+
                     marker.addListener("click", () => {
                         //calls function to close infowindow
+
                         closeOtherInfo();
                         infoWindow.open({
                             anchor: marker,
@@ -61,6 +69,20 @@ function initMap() {
                         //Places infowindow in array to keep track of which one is open
                         InforObj[0] = infoWindow;
                     });
+
+                    marker.addListener("dblclick", () => {
+
+                        console.log("double before")
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+                        }
+                        else {
+                            alert("Geolocation not supported");
+                        }
+                        console.log("double after")
+
+                    });
+
                 }
             }
         } catch (e) {
@@ -120,6 +142,7 @@ function initMap() {
         }
     });
 
+/* Might use this later, will delete if I don't
     //adds button for directions
 
     const dicButton = document.createElement("button");
@@ -138,32 +161,10 @@ function initMap() {
         }
         console.log("now hereeeeeeeeeeeee")
 
-        /*
-        directionsService.route(
-            {
-                //origin: "272 Bronson Ave, Ottawa, Canada",
-                //origin: "39.741462,-105.009659",
-                //origin: success2(),
-                origin: globb,
-                //destination: "1385 Woodroffe Ave, Nepean, Canada",
-                destination: "5th St, Denver, CO 80204",
-                //travelMode: "DRIVING",
-                travelMode: "WALKING",
-            },
-            (response, status) => {
-                if (status === "OK") {
-
-                    new google.maps.DirectionsRenderer({
-                        suppressMarkers: true,
-                        directions: response,
-                        map: map,
-                    });
-                }
-            })
-*/
     });
-
+*/
 }
+
 
 function locationSuccess(position) {
 
@@ -191,5 +192,7 @@ function locationSuccess(position) {
 function locationError() {
     alert("Couldn't get location");
 }
+
+
 
 window.initMap = initMap;
