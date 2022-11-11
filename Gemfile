@@ -82,3 +82,5 @@ gem "figaro", "~> 1.2"
 
 
 gem "webpush", "~> 1.1"
+
+gem "whenever", "~> 1.0"
