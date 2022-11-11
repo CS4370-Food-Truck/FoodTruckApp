@@ -72,14 +72,7 @@ function initMap() {
 
                     marker.addListener("dblclick", () => {
 
-                        console.log("double before")
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
-                        }
-                        else {
-                            alert("Geolocation not supported");
-                        }
-                        console.log("double after")
+                        getDirections(marker.position)
 
                     });
 
@@ -165,7 +158,44 @@ function initMap() {
 */
 }
 
+function getDirections(end) {
+    console.log("position: " + end)
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
 
+            (position) => {
+                var directionsService = new google.maps.DirectionsService();
+                var directionsDisplay = new google.maps.DirectionsRenderer();
+
+                var myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                var truckLocation = new google.maps.LatLng(end);
+
+                directionsDisplay.setMap(map);
+
+                var request = {
+                    origin: myLocation,
+                    destination: truckLocation,
+                    travelMode: 'WALKING'
+                };
+
+                directionsService.route(request, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK)
+                        directionsDisplay.setDirections(result);
+                });
+
+            },
+
+            () => {
+                handleLocationError(true, infoWindow, map.getCenter());
+            }
+        );
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
+}
+
+/*
 function locationSuccess(position) {
 
     var directionsService = new google.maps.DirectionsService();
@@ -192,7 +222,7 @@ function locationSuccess(position) {
 function locationError() {
     alert("Couldn't get location");
 }
-
+*/
 
 
 window.initMap = initMap;
