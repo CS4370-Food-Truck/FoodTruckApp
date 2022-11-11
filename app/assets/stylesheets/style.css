@@ -2,10 +2,39 @@
     height: 400px;
     width: 40%;
         float: left;
+
     }
     #table {
         width: 55%;
         float: right;
         table-layout: fixed;
+        background-color: rgba(177, 161, 161, 0.692);  
+        overflow-y: scroll; 
+        height: 400px;
     }
-}
+
+
+/* Used website code to make the table scrollable: https://mdbootstrap.com/docs/b4/jquery/tables/scroll/#advanced-table-options */
+
+
+.dtHorizontalVerticalExampleWrapper {
+     max-width: auto; 
+     margin: 0 auto; 
+  }
+  #dtHorizontalVerticalExample th, td {
+     white-space: nowrap; 
+
+  }
+
+  button, input[type=button]{
+    padding: 1em 2em;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 2px solid #222;
+    border-radius: 4px;
+    /* background-color: rgb(160, 170, 170); */
+  }
+  button:hover, input[type=button]:hover{
+    background-color: rgb(238, 218, 218);
+  
+  }

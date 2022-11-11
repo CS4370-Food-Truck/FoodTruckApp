@@ -1,7 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<h1> <%=@truck.name%></h1>
 
+<div id = "table">
   <%= render @truck %>
-  <script type="module" src="/assets/controllers/notifications.js"></script>
+</div>
   <div>
     <% if logged_in? %>
       <%= link_to "Edit this truck", edit_truck_path(@truck) %> |
@@ -12,4 +13,5 @@
       <%= button_to "Destroy this truck", @truck, method: :delete %>
     <% end %>
   </div>
+<script type="module" src="/assets/controllers/notifications.js"></script>
 
