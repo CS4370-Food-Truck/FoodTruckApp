@@ -20,7 +20,7 @@ function weekDayToString(day){
     }
 }
 
-//don't worry about this, I might use it later, if not I'll delete - arturo
+//don't worry about this, I might use it later, if not I'll delete - Arturo
 //infoWindow.setContent("<div>" + truck.name + "<br><input type='submit' id='butSubmit' value='Procurar' onclick='dicDic()'><div id='bar'></div></div>");
 
 
