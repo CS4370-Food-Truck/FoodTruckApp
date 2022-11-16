@@ -23,7 +23,9 @@
   Where i got the checkox format:
   https://getbootstrap.com/docs/5.2/forms/checks-radios/#indeterminate
 
-  
+  This Looks very helpful and seems like its exactly what I need
+  https://www.learnwithjason.dev/blog/get-form-values-as-json/
+
   -->
 
   <%days= ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]%>
@@ -33,10 +35,13 @@
   <% days.each do |d|%>
     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
     <label class="form-check-label" for="flexCheckDefault">
+    
       <%= d%>
     </label>
     <%end%>
   </div>
+
+  
 
   <div>
     <%= form.label :website, style: "display: block" %>
