@@ -1,0 +1,235 @@
+{
+  "id": "cf45e71e-a208-46b9-8467-4a78fc38638f",
+  "version": "2.0",
+  "name": "Test02",
+  "url": "http://localhost:3000/",
+  "tests": [{
+    "id": "586f6a16-95f9-422d-a90d-f66eaf0d4073",
+    "name": "Front end test",
+    "commands": [{
+      "id": "ffed6ff6-9202-40bb-92ce-f2b63330e69a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/trucks",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dea19c14-fed3-4757-a8c4-7ce02dab54a9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "790x816",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "62c6bf62-e9e7-4a37-86dd-cd05cbf9bd46",
+      "comment": "",
+      "command": "click",
+      "target": "css=.button_to:nth-child(3) > button",
+      "targets": [
+        ["css=.button_to:nth-child(3) > button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log In')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca4baba8-65b5-4eb6-980b-2f4a891b42f2",
+      "comment": "",
+      "command": "click",
+      "target": "id=session_username",
+      "targets": [
+        ["id=session_username", "id"],
+        ["name=session[username]", "name"],
+        ["css=#session_username", "css:finder"],
+        ["xpath=//input[@id='session_username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bac8f723-d6c2-444a-b15e-04b6d599ac5e",
+      "comment": "",
+      "command": "type",
+      "target": "id=session_username",
+      "targets": [
+        ["id=session_username", "id"],
+        ["name=session[username]", "name"],
+        ["css=#session_username", "css:finder"],
+        ["xpath=//input[@id='session_username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "adminDemo"
+    }, {
+      "id": "db215ad8-633d-4d4b-96a6-a98bfc9ccb2d",
+      "comment": "",
+      "command": "click",
+      "target": "id=session_password",
+      "targets": [
+        ["id=session_password", "id"],
+        ["name=session[password]", "name"],
+        ["css=#session_password", "css:finder"],
+        ["xpath=//input[@id='session_password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b6d82b4d-545d-47e7-8d69-7d23159ffc53",
+      "comment": "",
+      "command": "type",
+      "target": "id=session_password",
+      "targets": [
+        ["id=session_password", "id"],
+        ["name=session[password]", "name"],
+        ["css=#session_password", "css:finder"],
+        ["xpath=//input[@id='session_password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "password123"
+    }, {
+      "id": "f2675fe8-5999-4bd7-bb28-4fb3c3388278",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "id=session_password",
+      "targets": [
+        ["id=session_password", "id"],
+        ["name=session[password]", "name"],
+        ["css=#session_password", "css:finder"],
+        ["xpath=//input[@id='session_password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "1c1fb03a-dc5f-4f23-b401-be92d0aef3e8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Show this truck",
+      "targets": [
+        ["linkText=Show this truck", "linkText"],
+        ["css=p:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Show this truck')]", "xpath:link"],
+        ["xpath=//div[@id='trucks']/p/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/trucks/1')]", "xpath:href"],
+        ["xpath=//p/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Show this truck')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "29c252f1-cd9a-486c-bcbc-83256438dab9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit this truck",
+      "targets": [
+        ["linkText=Edit this truck", "linkText"],
+        ["css=a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit this truck')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks/1/edit')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Edit this truck')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d431ebc8-4fe6-4dd5-90d3-0e3bcc8c0096",
+      "comment": "",
+      "command": "click",
+      "target": "name=commit",
+      "targets": [
+        ["name=commit", "name"],
+        ["css=div:nth-child(9) > input", "css:finder"],
+        ["xpath=//input[@name='commit']", "xpath:attributes"],
+        ["xpath=//div[7]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bbd11389-1aff-4bca-aaa9-c065effc9635",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "linkText=Back to trucks (simple view)",
+      "targets": [
+        ["linkText=Back to trucks (simple view)", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to trucks (simple view)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks-simple')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to trucks (simple view)')]", "xpath:innerText"]
+      ],
+      "value": "10.712493896484375,1.399993896484375"
+    }, {
+      "id": "7182d520-4b73-4c32-bbad-560ad34e4344",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "linkText=Back to trucks (simple view)",
+      "targets": [
+        ["linkText=Back to trucks (simple view)", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to trucks (simple view)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks-simple')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to trucks (simple view)')]", "xpath:innerText"]
+      ],
+      "value": "10.712493896484375,1.399993896484375"
+    }, {
+      "id": "529d009c-9771-47fc-8219-49a0ee2b966a",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "linkText=Back to trucks (simple view)",
+      "targets": [
+        ["linkText=Back to trucks (simple view)", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to trucks (simple view)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks-simple')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to trucks (simple view)')]", "xpath:innerText"]
+      ],
+      "value": "10.712493896484375,1.399993896484375"
+    }, {
+      "id": "12c2fc38-4905-4f44-9253-1870edb2f98c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Back to trucks (simple view)",
+      "targets": [
+        ["linkText=Back to trucks (simple view)", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to trucks (simple view)')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks-simple')]", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to trucks (simple view)')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "86febcc8-791a-4072-95b8-fe0283b09175",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Back to complex view",
+      "targets": [
+        ["linkText=Back to complex view", "linkText"],
+        ["css=a:nth-child(5)", "css:finder"],
+        ["xpath=//a[contains(text(),'Back to complex view')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/trucks')]", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Back to complex view')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc6057de-94dd-4d58-8610-2e99a7d6ea32",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log Out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "3846bc9e-01ec-4845-86fb-70f9f02bd315",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["586f6a16-95f9-422d-a90d-f66eaf0d4073"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}
