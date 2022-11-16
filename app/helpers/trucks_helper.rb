@@ -1,5 +1,5 @@
 module TrucksHelper
-        def format_schedule(x)
+    def format_schedule(x)
         t = JSON.parse(x)
         w = ""
         if t["Monday"] === true
@@ -31,8 +31,5 @@ module TrucksHelper
     #
     #What the schedule input needs to look like
     #'{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}'
-    def input_schedule(x[]):
-        s="{"
-        
-    end
+
 end
