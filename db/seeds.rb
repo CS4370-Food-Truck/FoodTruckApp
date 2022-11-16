@@ -12,6 +12,7 @@
 #Truck.create(name: "test1", website: "test1", latitude: 39.743287, longitude: -105.005651,  menu: "test1", schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
 #Truck.create(name: "test2", website: "test2", latitude: 39.743211, longitude: -105.005428, menu: "test2",  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": true, "Saturday": true, "Sunday": true}')
 #Truck.create(name: "test3", website: "test3", latitude: 39.741843, longitude: -105.007926, menu: "test3",  schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
+User.create(username: "adminDemo", password: "password123")
 
 ##############################################################################
 #                              Actual Seeds                                  #
@@ -32,6 +33,4 @@ Truck.create(name: "Roll it Up Sushi", schedule: '{"Monday": true, "Tuesday": fa
 Truck.create(name: "Billy's Gorment Hot Dogs", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://billysgourmethotdogs.com/", latitude:39.743287, longitude: -105.005651, menu: "https://billysgourmethotdogs.com/food-menu/")
 Truck.create(name: "El Taco Bron", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://www.eltacobron.com/", latitude:39.743287, longitude: -105.005651, menu: "https://www.eltacobron.com/menu")
 Truck.create(name: "Ba-nom-a-nom", schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": false, "Saturday": false, "Sunday": false}', website: "https://banomanom.com/", latitude: 39.743287, longitude: -105.005651, menu: "https://banomanom.com/our-menu")
-Truck.create(name: "Biker Jim's", schedule: '{"Monday": true, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": true, "Saturday": false, "Sunday": false}', website: "www.bikerjimsdogs.com", latitude: 39.744155, longitude: -105.006029, menu: "https://bikerjimsdogs.com/our-menu/")
-Truck.create(name: "Biker Jim's", schedule: '{"Monday": true, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}', website: "www.bikerjimsdogs.com", latitude: 39.743287, longitude: -105.006029, menu: "https://bikerjimsdogs.com/our-menu/")
 Truck.create(name: "Biker Jim's", schedule: '{"Monday": true, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": true, "Saturday": false, "Sunday": false}', website: "www.bikerjimsdogs.com", latitude: 39.744155, longitude: -105.006029, menu: "https://bikerjimsdogs.com/our-menu/")

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             redirect_to(trucks_path)
         else
             flash[:notice] = "There was something wrong with your login.  Please re-enter your login."
-            render('new')
+            redirect_to(login_path)
         end
     end
 

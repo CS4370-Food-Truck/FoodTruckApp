@@ -1,7 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
+<h1> <%=@truck.name%></h1>
+<%= render 'trucks/navigate'%>
+<div id = "table">
   <%= render @truck %>
-
+</div>
   <div>
     <% if logged_in? %>
       <%= link_to "Edit this truck", edit_truck_path(@truck) %> |
@@ -12,4 +13,4 @@
       <%= button_to "Destroy this truck", @truck, method: :delete %>
     <% end %>
   </div>
-
+<span data-controller="trucks--show"></span>
