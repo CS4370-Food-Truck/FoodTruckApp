@@ -12,6 +12,7 @@
 #Truck.create(name: "test1", website: "test1", latitude: 39.743287, longitude: -105.005651,  menu: "test1", schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
 #Truck.create(name: "test2", website: "test2", latitude: 39.743211, longitude: -105.005428, menu: "test2",  schedule: '{"Monday": true, "Tuesday": false, "Wednesday": false, "Thursday": false, "Friday": true, "Saturday": true, "Sunday": true}')
 #Truck.create(name: "test3", website: "test3", latitude: 39.741843, longitude: -105.007926, menu: "test3",  schedule: '{"Monday": false, "Tuesday": true, "Wednesday": true, "Thursday": true, "Friday": false, "Saturday": false, "Sunday": false}')
+User.create(username: "adminDemo", password: "password123")
 
 ##############################################################################
 #                              Actual Seeds                                  #
