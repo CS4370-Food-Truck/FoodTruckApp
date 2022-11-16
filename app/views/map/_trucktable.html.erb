@@ -6,8 +6,8 @@
 
 <div id="trucks">
 
-<table class=" table table-stiped table-bordered table-hover">
-  <thead class= "thread-primary">
+<table class=" table table-hover">
+  <thead>
     <tr>
       <th scope="col">Truck's Name</th>
       <th scope="col">Website</th>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <% Truck.all.each do |truck| %>
-      <tr class="table-primary table-striped">
+      <tr class="table-striped">
         <td><%=link_to truck.name, truck%></td>
         <td><%=link_to "Visit", truck.website%></td>
         <td><%=link_to "View cite's menue", truck.menu%></td>
