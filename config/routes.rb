@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   resources :users, except: [:new]
+  post "/save-subscription", to: "notifications#subscribe"
+  post "/add-subscription", to: "notifications#subtruck"
+  post "/remove-subscription", to: "notifications#unsubtruck"
+  post "/unsubscribe", to: "notifications#unsubscribe"
+  get "/notify", to: "notifications#notify"
+
 end
