@@ -6,6 +6,7 @@
     }
     #table {
         width: 100%;
+        
         table-layout: fixed;
         background-color: rgb(233, 219, 157);  
         overflow-y: scroll; 
