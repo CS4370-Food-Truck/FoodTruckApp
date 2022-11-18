@@ -183,6 +183,10 @@ function getDirections(end) {
                         directionsDisplay.setDirections(result);
                 });
 
+                google.maps.event.addListener(map, "click", function(event) {
+                    directionsDisplay.setMap(null)
+                });
+
             },
 
             () => {
