@@ -1,18 +1,19 @@
 #map {
     height: 400px;
-    width: 40%;
+    width: 65%;
         float: left;
 
     }
     #table {
-        width: 55%;
-        float: right;
+        width: 100%;
+        
         table-layout: fixed;
-        background-color: rgba(177, 161, 161, 0.692);  
+        background-color: rgb(233, 219, 157);  
         overflow-y: scroll; 
         height: 400px;
         color: rgb(85, 2, 2);
     }
+
 
 /* Used website code to make the table scrollable: https://mdbootstrap.com/docs/b4/jquery/tables/scroll/#advanced-table-options */
 

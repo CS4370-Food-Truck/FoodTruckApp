@@ -1,19 +1,8 @@
 <p style="color: green"><%= notice %></p>
-<% if logged_in? %>
-  <%= button_to 'Log Out', logout_path(current_user), method: :delete %>
-<%  else %>
-  <%= button_to 'Log In', login_path, method: :get  %>
-  <%= button_to 'Sign Up', signup_path, method: :get %>
-<% end %>
-
 <h1>Trucks</h1>
 
+<%= render 'trucks/navigate'%>
 
-
-<%= link_to "Simple view", "/trucks-simple" %>
-<% if logged_in? %>
-  <%= link_to "Delete all trucks", "/trucks-delete" %>
-<% end %>
 <div id="trucks">
   <% @trucks.each do |truck| %>
     <%= render truck %>
@@ -23,5 +12,6 @@
   <% end %>
 </div>
 <% if logged_in? %>
-  <%= link_to "New truck", new_truck_path %>
+  <%= button_to "New truck", new_truck_path %>
+  <%= button_to "Delete all trucks", "/trucks-delete" %>
 <% end %>
