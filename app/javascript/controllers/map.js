@@ -27,15 +27,19 @@ function initMap() {
         center: msu,
     });
 
+
+
     //array used for closing infowindow
     let InforObj = [];
 
     for (let i = 0; i < trucksJson.length; i++) {
 
         let truck = trucksJson[i];
+        let website = truck.website.replace('http://', '')
+        website = website.replace('https://', '')
         let textContent =
             '<h1>' + truck.name + '</h1>' +
-            '<a href=">' + truck.website + '">Truck Website</a>'
+            '<a href="https://' + website + '" target="_blank" >Truck Website</a>'
         ;
         let infoWindow = new google.maps.InfoWindow({
             content: textContent
@@ -87,6 +91,7 @@ function initMap() {
             InforObj.length = 0;
         }
     }
+
 }
 
 //function gets user location and displays walking directions
@@ -98,7 +103,7 @@ function getDirections(end) {
             (position) => {
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
-
+                var selectedMode = document.getElementById("mode").value
                 var myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var truckLocation = new google.maps.LatLng(end);
 
@@ -107,7 +112,8 @@ function getDirections(end) {
                 var request = {
                     origin: myLocation,
                     destination: truckLocation,
-                    travelMode: 'WALKING'
+                    //travelMode: 'WALKING'
+                    travelMode: google.maps.TravelMode[selectedMode]
                 };
 
                 directionsService.route(request, function (result, status) {
