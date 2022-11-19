@@ -20,17 +20,14 @@ function weekDayToString(day){
     }
 }
 
-//don't worry about this, I might use it later, if not I'll delete - Arturo
-//infoWindow.setContent("<div>" + truck.name + "<br><input type='submit' id='butSubmit' value='Procurar' onclick='dicDic()'><div id='bar'></div></div>");
-
-
-
 function initMap() {
     const msu = {lat: 39.743057, lng: -105.005554};
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 16,
         center: msu,
     });
+
+
 
     //array used for closing infowindow
     let InforObj = [];
@@ -42,7 +39,7 @@ function initMap() {
         website = website.replace('https://', '')
         let textContent =
             '<h1>' + truck.name + '</h1>' +
-            '<a href="https://' + website + '" >Truck Website</a>'
+            '<a href="https://' + website + '" target="_blank" >Truck Website</a>'
         ;
         let infoWindow = new google.maps.InfoWindow({
             content: textContent
@@ -95,71 +92,9 @@ function initMap() {
         }
     }
 
-    let infoWindow = new google.maps.InfoWindow();
-    const locationButton = document.createElement("button");
-
-    //adds button to find user location
-
-    locationButton.textContent = "Pan to Current Location";
-    locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-
-    function success(position){
-        const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-        };
-
-        infoWindow.setPosition(pos);
-        infoWindow.setContent("Location found.");
-        infoWindow.open(map);
-        map.setCenter(pos);
-        console.log(pos)
-    }
-
-    locationButton.addEventListener("click", () => {
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-
-                (position) => {
-                    success(position)
-
-                },
-
-                () => {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                }
-            );
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    });
-
-    /* Might use this later, will delete if I don't
-        //adds button for directions
-
-        const dicButton = document.createElement("button");
-        dicButton.textContent = "Directions";
-        dicButton.classList.add("custom-map-control-button");
-        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(dicButton);
-
-        dicButton.addEventListener("click", () => {
-
-            console.log("hereeeeeeeeeeeee")
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
-            }
-            else {
-                alert("Geolocation not supported");
-            }
-            console.log("now hereeeeeeeeeeeee")
-
-        });
-    */
 }
 
+//function gets user location and displays walking directions
 function getDirections(end) {
     console.log("position: " + end)
     if (navigator.geolocation) {
@@ -168,7 +103,7 @@ function getDirections(end) {
             (position) => {
                 var directionsService = new google.maps.DirectionsService();
                 var directionsDisplay = new google.maps.DirectionsRenderer();
-
+                var selectedMode = document.getElementById("mode").value
                 var myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 var truckLocation = new google.maps.LatLng(end);
 
@@ -177,12 +112,17 @@ function getDirections(end) {
                 var request = {
                     origin: myLocation,
                     destination: truckLocation,
-                    travelMode: 'WALKING'
+                    //travelMode: 'WALKING'
+                    travelMode: google.maps.TravelMode[selectedMode]
                 };
 
                 directionsService.route(request, function (result, status) {
                     if (status == google.maps.DirectionsStatus.OK)
                         directionsDisplay.setDirections(result);
+                });
+
+                google.maps.event.addListener(map, "click", function(event) {
+                    directionsDisplay.setMap(null)
                 });
 
             },
@@ -196,35 +136,5 @@ function getDirections(end) {
         handleLocationError(false, infoWindow, map.getCenter());
     }
 }
-
-/*
-function locationSuccess(position) {
-
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-
-    var myLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    var truckLocation = new google.maps.LatLng(39.741462, -105.009659);
-
-    directionsDisplay.setMap(map);
-
-    var request = {
-        origin: myLocation,
-        destination: truckLocation,
-        travelMode: 'WALKING'
-    };
-
-    directionsService.route(request, function (result, status) {
-        if (status == google.maps.DirectionsStatus.OK)
-            directionsDisplay.setDirections(result);
-    });
-
-}
-
-function locationError() {
-    alert("Couldn't get location");
-}
-*/
-
 
 window.initMap = initMap;
