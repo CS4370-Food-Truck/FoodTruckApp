@@ -38,9 +38,11 @@ function initMap() {
     for (let i = 0; i < trucksJson.length; i++) {
 
         let truck = trucksJson[i];
+        let website = truck.website.replace('http://', '')
+        website = website.replace('https://', '')
         let textContent =
             '<h1>' + truck.name + '</h1>' +
-            '<a href=">' + truck.website + '">Truck Website</a>'
+            '<a href="https://' + website + '" >Truck Website</a>'
         ;
         let infoWindow = new google.maps.InfoWindow({
             content: textContent
