@@ -1,27 +1,44 @@
 <style>
     h1 {text-align: center;}
+    h1 {margin-top: 10px}
     h3 {text-align: center;}
     p {text-align: center;}
-    div {text-align: center;}
+    div {text-align: left;}
 </style>
 
-<h1><span style="font-size: 144%; "> Rowdy’s Food Truck Finder</span></h1>
+<h1><span style="font-size: 100%; "> Rowdy’s Food Truck Finder</span></h1>
+
 
 <script type="module" src="/assets/controllers/map.js"></script>
 <head>
   <title>Add Map</title>
-  <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/mobile.css" />
 
 </head>
 
 
-<body>
-<h3><span style="font-size: 144%; ">Food Truck Locator</span></h3>
+<body style="background-color: #cfbe8d;">
+
+
+
+
+<h3></h3>
 <div id="map"></div>
 <script
   src="https://maps.googleapis.com/maps/api/js?key=<%= Figaro.env.MAP_API %>&callback=initMap&v=weekly"
   defer
 ></script>
+
+<div id="floating-panel">
+  <b>Travel Mode: </b>
+  <select id="mode">
+    <option value="DRIVING">Driving</option>
+    <option value="WALKING">Walking</option>
+    <option value="BICYCLING">Bicycling</option>
+    <option value="TRANSIT">Transit</option>
+  </select>
+</div>
+
 </body>
 
 <%= render 'map/trucktablem'%>
