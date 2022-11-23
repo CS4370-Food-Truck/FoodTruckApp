@@ -84,6 +84,6 @@ class TrucksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def truck_params
-      params.require(:truck).permit(:name, :schedule[], :website, :longitude, :latitude, :menu)
+      params.require(:truck).permit(:name, :schedule, :website, :longitude, :latitude, :menu)
     end
 end
