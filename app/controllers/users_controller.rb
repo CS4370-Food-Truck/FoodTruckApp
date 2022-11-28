@@ -5,13 +5,18 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.new(user_params)
-        if @user.save
-            flash[:notice] = "User created."
+        if Figaro.env.TESTING == "true"
+            @user = User.new(user_params)
+            if @user.save
+                flash[:notice] = "User created."
+                redirect_to(trucks_path)
+            else
+                render('new')
+            end
+        else
+            flash[:notice] = "You are not allowed to create a user."
             redirect_to(trucks_path)
-       else
-            render('new')
-       end
+        end
     end
 
     private

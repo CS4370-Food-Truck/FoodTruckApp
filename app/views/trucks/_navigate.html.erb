@@ -10,17 +10,17 @@
   <body class="p-4 m-0 border-1 bd-example">
     <ul class="nav justify-content-end">
     <li class="nav-link dark-link">
-        <a class="nav-link" href="map">Map</a>
+        <a class="nav-link" href="/map.html">Map</a>
     </li>
     <li class="nav-link dark-link">
-        <a class="nav-link" href="trucks">Truck's List</a>
+        <a class="nav-link" href="/trucks.html">Truck's List</a>
     </li>
     <li class="nav-link dark-link">
-        <a class="nav-link" href="trucks-simple">Simple View</a>
+        <a class="nav-link" href="/trucks-simple.html">Simple View</a>
     </li>
     <% if logged_in? %>
         <li class="nav-link dark-link">
-            <a class="nav-link" href="trucks/new">Add Truck</a>
+            <a class="nav-link" href="/trucks/new.html">Add Truck</a>
             <%= button_to 'Log Out', logout_path(current_user), method: :delete %>
         </li>
         <%  else %>
