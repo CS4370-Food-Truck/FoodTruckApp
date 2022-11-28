@@ -12,6 +12,6 @@
   <% end %>
 </div>
 <% if logged_in? %>
-  <%= button_to "New truck", new_truck_path %>
-  <%= button_to "Delete all trucks", "/trucks-delete" %>
+  <%= button_to "New truck", new_truck_path, method: :get %>
+  <%= button_to "Delete all trucks", "/trucks-delete", method: :get %>
 <% end %>

@@ -65,14 +65,18 @@ class TrucksController < ApplicationController
   end
 
   def destroyall
-    @trucks = Truck.all
-    @trucks.each do |truck|
-      truck.destroy
-    end
+    if Figaro.env.TESTING == "true"
+      @trucks = Truck.all
+      @trucks.each do |truck|
+        truck.destroy
+      end
 
-    respond_to do |format|
-      format.html { redirect_to trucks_url, notice: "All trucks destroyed" }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to trucks_url, notice: "All trucks destroyed" }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to trucks_url, notice: "You are not authorized to do that."
     end
   end
 
