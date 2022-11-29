@@ -117,3 +117,4 @@ In the same place where you put the map API key, and the notification keys, add 
 
 This will enable the testing features of the web application.
 You should not have this enabled if you are hosting the website to the public because it allows for anyone to access testing features.
+
