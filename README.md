@@ -57,6 +57,8 @@ And confirm your installation using
   
   ``rails db:migrate``
   
+  ``rails assets:precompile``
+  
   ``rails server``
   
   The server should then be running.
@@ -70,6 +72,7 @@ And confirm your installation using
     
 
 **Getting an API KEY**
+
 Go to:
 https://developers.google.com/maps
 Select "Get started" and follow google's instructions.
@@ -83,4 +86,35 @@ Inside config/application.yml add the line
 
 ``MAP_API: YOUR-API-KEY``
 Replace YOUR-API-KEY with your API key.
+You must restart the server for the changes to config/application.yml go live.
+
+
+**Getting Notification keys**
+
+You will need a public and private key for the notification system to work properly.
+An easy way to do this is using an online generator:
+https://web-push-codelab.glitch.me/
+
+You may also use these npm commands to achieve the same thing:
+npm install -g web-push
+web-push generate-vapid-keys
+
+In the same place where you put the map API key, add the following lines:
+
+```
+NOTIFY_PUBLIC:  YOUR-PUBLIC-KEY
+NOTIFY_PRIVATE: YOUR-PRIVATE-KEY
+```
+
+Replace YOUR-PUBLIC-KEY and YOUR-PRIVATE-KEY with the public and private keys you got.
+
+
+**Enabling testing features**
+
+In the same place where you put the map API key, and the notification keys, add the following line:
+
+```TESTING: "true"```
+
+This will enable the testing features of the web application.
+You should not have this enabled if you are hosting the website to the public because it allows for anyone to access testing features.
 
