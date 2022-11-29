@@ -36,18 +36,6 @@
     ></script>
 <!--This is the Dropdown button that displays the table-->
   <div class="btn-group-vertical btn-danger" role="group" aria-label="Vertical button group">
-  <!-- Log in and log out buttons-->
-      <% if logged_in? %>
-        <%= button_to 'Log Out', logout_path(current_user), method: :delete %>
-        <button type="button" class="btn">
-        <%= link_to 'View truck list', trucks_path, method: :get %>
-        </button>
-        
-      <%  else %>
-        <%= button_to 'Log In', login_path, method: :get  %>
-        <%= button_to 'Sign Up', signup_path, method: :get %>
-      <% end %>
-
       <!-- button to Go to the trucks page-->
 
       <%# button for truck links %>
