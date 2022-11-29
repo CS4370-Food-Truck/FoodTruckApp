@@ -15,3 +15,10 @@
   <%= button_to "New truck", new_truck_path, method: :get %>
   <%= button_to "Delete all trucks", "/trucks-delete", method: :get %>
 <% end %>
+
+<% if logged_in? %>
+  <%= button_to 'Admin Log Out', logout_path(current_user), method: :delete %>
+<%  else %>
+  <%= button_to 'Admin Log In', login_path, method: :get  %>
+  <%= button_to 'Admin Sign Up', signup_path, method: :get %>
+<% end %>
