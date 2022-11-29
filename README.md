@@ -96,8 +96,11 @@ An easy way to do this is using an online generator:
 https://web-push-codelab.glitch.me/
 
 You may also use these npm commands to achieve the same thing:
+
+```
 npm install -g web-push
 web-push generate-vapid-keys
+```
 
 In the same place where you put the map API key, add the following lines:
 
