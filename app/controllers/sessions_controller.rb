@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+    
+    #This is what lets a user "sign-in"
     def create
         user = User.find_by(username: params[:session][:username])
         if user !=nil && user.authenticate(params[:session][:password])
@@ -12,10 +13,9 @@ class SessionsController < ApplicationController
         end
     end
 
+    #This is what signs a user out
     def destroy
-        #session.delete(:current_user_id)
         session[:user_id] = nil
-        #@_current_user = nil
         flash[:notice] = "You are now logged out."
         redirect_to(trucks_path)
     end
