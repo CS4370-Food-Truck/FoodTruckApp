@@ -5,6 +5,7 @@ export default class extends Controller {
   connect() {
     //Code created with some reference from: https://web.dev/push-notifications-subscribing-a-user/
 
+    //Middleman used by the browser to keep us "online" with the user even when they are not on our site.
     function registerServiceWorker() {
       return navigator.serviceWorker
           .register('/service-worker.js')
@@ -18,7 +19,7 @@ export default class extends Controller {
     }
 
     function requestPermission() {
-      //Need to check for callback version and promise version
+      //Need to check for both callback version and promise version
       return new Promise(function (resolve, reject) {
         const permissionResult = Notification.requestPermission(function (result) {
           resolve(result);
@@ -34,6 +35,7 @@ export default class extends Controller {
       });
     }
 
+    //Subscribes a new user to the push notifications
     function subscribeUserToPush() {
       return navigator.serviceWorker
           .register('/service-worker.js')
@@ -41,7 +43,7 @@ export default class extends Controller {
             const subscribeOptions = {
               userVisibleOnly: true,
               applicationServerKey: urlBase64ToUint8Array(
-                  //TODO: Make user get public key from a file on the website instead of hardcoding it.
+                  //Someday we will want to make user get public key from a file on the website instead of hardcoding it.
                   'BJ-M85-rL_cR-YOb1tFTiz9BRyss0bEdrjxssfhUqZcnvHsSOABWVZs-zJ8_qYN_sE2AxbFXgSVY6LiyLBg9GyA',
               ),
             };
@@ -57,6 +59,7 @@ export default class extends Controller {
           });
     }
 
+    //Changes the subscription hashmap sent to server to add information on truck that the user is subscribing to.
     function subscriptionAndTrucks(subscription) {
       let url = window.location.href;
       let fixedSubscription = JSON.parse(JSON.stringify(subscription));
@@ -64,6 +67,7 @@ export default class extends Controller {
       return fixedSubscription;
     }
 
+    //Send the subscription for updating the server's notification database.
     function sendSubscriptionToBackEnd(subscription) {
       return fetch('/save-subscription/', {
         method: 'POST',
@@ -80,6 +84,7 @@ export default class extends Controller {
           });
     }
 
+    //Send data telling server to add another truck subscription on the backend.
     function updateSubscriptionOnBackEnd(subscription) {
       return fetch('/add-subscription/', {
         method: 'POST',
@@ -96,6 +101,7 @@ export default class extends Controller {
           });
     }
 
+    //Send data telling server to remove a subscribed truck on the backend.
     function removePartialSubscriptionOnBackEnd(subscription) {
       return fetch('/remove-subscription/', {
         method: 'POST',
@@ -112,6 +118,7 @@ export default class extends Controller {
           });
     }
 
+    //Check to see if the user's browser can support notifications
     function testCompatability() {
       if (!('serviceWorker' in navigator)) {
         throw new Error('No Service Worker support!');
@@ -123,6 +130,7 @@ export default class extends Controller {
       return true;
     }
 
+    //Takes a base 64 string and turns it into an array of 8-bit unsigned integers
     function urlBase64ToUint8Array(base64String) {
       const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
       const base64 = (base64String + padding)
@@ -138,6 +146,7 @@ export default class extends Controller {
       return outputArray;
     }
 
+    //Check to see if the user has an active subscription on the server.
     function checkForSubscription(){
       return navigator.serviceWorker.ready
           .then((serviceWorkerRegistration) => {return serviceWorkerRegistration.pushManager.getSubscription()})
@@ -147,6 +156,7 @@ export default class extends Controller {
           })
     }
 
+    //Unsubscribe the user entirely from all notifications.
     function unsubscribeUser(subscription){
       return fetch('/unsubscribe/', {
         method: 'POST',
@@ -164,6 +174,7 @@ export default class extends Controller {
           });
     }
 
+    //Show the buttons for editing a user's subscription
     function showButtons(givenSubscription) {
       if (!givenSubscription) {
         console.log("No subscription data found.")
@@ -198,7 +209,7 @@ export default class extends Controller {
       }
     }
 
-
+    // Check if the browser is compatible with notifications and if it is, show buttons.
     if (testCompatability() === true){
       let notificationsButton = document.createElement("button");
       notificationsButton.innerHTML = "Open Notification Controls";
