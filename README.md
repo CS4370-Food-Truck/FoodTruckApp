@@ -111,6 +111,16 @@ NOTIFY_PRIVATE: YOUR-PRIVATE-KEY
 
 Replace YOUR-PUBLIC-KEY and YOUR-PRIVATE-KEY with the public and private keys you got.
 
+In the current version of the program, you will need to manually edit line 47 of show_controller.js because Figaro cannot be easily accessed via javascript.
+
+```
+applicationServerKey: urlBase64ToUint8Array(
+                  'YOUR-PUBLIC-KEY',
+              ),
+```
+
+Replace YOUR-PUBLIC-KEY with the public key you got.
+
 
 **Enabling testing features**
 
