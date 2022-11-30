@@ -3,6 +3,7 @@ class NotificationsController < ApplicationController
   # Security is not so important here because this is not user-specific, and even if we
   # were to verify the authenticity token, that doesn't stop any of the possible exploits.
 
+  #Subscribe the new user to truck notifications
   def subscribe
     @subscription = PushSubscription.new(JSON.parse(request.body.read))
     if @subscription.save
@@ -12,6 +13,7 @@ class NotificationsController < ApplicationController
     end
   end
 
+  #Subscribe an existing user to another new truck
   def subtruck
     receivedsubscription = JSON.parse(request.body.read)
     url = receivedsubscription['endpoint']
@@ -24,6 +26,8 @@ class NotificationsController < ApplicationController
       PushSubscription.where(endpoint: url).update_all(trucks: newtrucks)
     end
   end
+
+  #Unsubscribe an existing user from a truck they might be subscribed to.
   def unsubtruck
     receivedsubscription = JSON.parse(request.body.read)
     url = receivedsubscription['endpoint']
@@ -37,12 +41,16 @@ class NotificationsController < ApplicationController
       puts("We are not subscribed to that truck.")
     end
   end
+
+  #Unsubscribe a user from all notifications
   def unsubscribe
     receivedsubscription = JSON.parse(request.body.read)
     url = receivedsubscription['endpoint']
     @subscription = PushSubscription.where(endpoint: url).first
     @subscription.destroy
   end
+
+  #Processes notifications for all subscribers, if a truck they like is coming, notify them.
   def notify
     if Figaro.env.TESTING == "true"
       dayofweeknames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
