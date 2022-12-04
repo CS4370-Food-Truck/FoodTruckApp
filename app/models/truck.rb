@@ -6,6 +6,6 @@ class Truck < ApplicationRecord
   validates :schedule, presence: true
   validates :website, presence: true
   validates :menu, presence: true
-  validates :longitude, numericality: {in: -104..-106}
+  validates :longitude, numericality: {in: -106..-104}
   validates :latitude, numericality: {in: 38..40}
 end
